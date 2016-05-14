@@ -92,6 +92,69 @@
                         <div id="sidebar-calendar"></div>
                     </div>
                     
+                    <!-- Feeds -->
+                    <!--
+                    <div class="s-widget m-b-25">
+                        <h2 class="tile-title">
+                           News Feeds
+                        </h2>
+                        
+                        <div class="s-widget-body">
+                            <div id="news-feed"></div>
+                        </div>
+                    </div>
+                    -->
+                    <!-- Projects -->
+                    <!--
+                    <div class="s-widget m-b-25">
+                        <h2 class="tile-title">
+                            Projects on going
+                        </h2>
+                        
+                        <div class="s-widget-body">
+                            <div class="side-border">
+                                <small>Joomla Website</small>
+                                <div class="progress progress-small">
+                                     <a href="#" data-toggle="tooltip" title="" class="progress-bar tooltips progress-bar-danger" style="width: 60%;" data-original-title="60%">
+                                          <span class="sr-only">60% Complete</span>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="side-border">
+                                <small>Opencart E-Commerce Website</small>
+                                <div class="progress progress-small">
+                                     <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-info" style="width: 43%;" data-original-title="43%">
+                                          <span class="sr-only">43% Complete</span>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="side-border">
+                                <small>Social Media API</small>
+                                <div class="progress progress-small">
+                                     <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-warning" style="width: 81%;" data-original-title="81%">
+                                          <span class="sr-only">81% Complete</span>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="side-border">
+                                <small>VB.Net Software Package</small>
+                                <div class="progress progress-small">
+                                     <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-success" style="width: 10%;" data-original-title="10%">
+                                          <span class="sr-only">10% Complete</span>
+                                     </a>
+                                </div>
+                            </div>
+                            <div class="side-border">
+                                <small>Chrome Extension</small>
+                                <div class="progress progress-small">
+                                     <a href="#" data-toggle="tooltip" title="" class="tooltips progress-bar progress-bar-success" style="width: 95%;" data-original-title="95%">
+                                          <span class="sr-only">95% Complete</span>
+                                     </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    -->
                 </div>
                 
                 <!-- Side Menu -->
@@ -430,7 +493,7 @@
                     <li class="active">Datos</li>
                 </ol>
                 
-                <h4 class="page-title">Registrar Usuario</h4>
+                <h4 class="page-title">Registrar Lapso</h4>
                             
                 <!-- Basic -->
                 <!--
@@ -470,113 +533,48 @@
                 <!-- Basic with panel-->
                 <div class="block-area" id="basic" style="max-width: 500px;">
                     <!--
-                    <h3 class="block-title">Basic Example with Panel</h3>
+                    <h3 class="block-title">Basic Example with Panel</h3>¨
                     -->
-
-                    <?php
-                        include('php/usuario.php');
-
-                        if (isset($_POST['registrarUsuario'])) {
-
-                            $nombre1 = $_POST['nombre1'];
-                            $nombre2 = $_POST['nombre2'];
-                            $apellido1 = $_POST['apellido1'];
-                            $apellido2 = $_POST['apellido2'];
-                            $direccion = $_POST['direccion'];
-                            $cedula = $_POST['cedula'];
-                            $fecha_nac = $_POST['fecha_nac'];
-
-                            /*
-                            if (!isset($_POST['coordenadas'])) {
-                                $coordenadas = "";  
-                            }
-                            else {
-                                $coordenadas = $_POST['coordenadas'];
-                            }
-                            */
-
-                          
-                            $user = new Usuario($nombre1, $nombre2, $apellido1, $apellido2, $cedula, $fecha_nac, $direccion);
-                            $respuestaRegistro = $user->registrarUsuario();
-
-                            unset($_POST);
-                            $_POST = array();
-
-                            //$user->model->cerrarConexion();
-                            /*
-                            if ($respuestaRegistro == 0) {
-                                //header("Location: login.php");
-                            }
-                            */
-                        }
-                    ?>    
-
                     <div class="tile p-15">
-                        <form role="form" method="post">
-                            <div class="form-group">
-                                <input type="text" name="nombre1" class="form-control input-sm m-b-10" placeholder="Primer Nombre">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="nombre2" class="form-control input-sm m-b-10" placeholder="Segundo Nombre (Opcional)">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="apellido1" class="form-control input-sm m-b-10" placeholder="Primer Apellido">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="apellido2" class="form-control input-sm m-b-10" placeholder="Segundo Apellido (Opcional)">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="cedula" class="form-control input-sm m-b-10" placeholder="Cedula">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="date" name="fecha_nac" class="form-control input-sm m-b-10">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <textarea name="direccion" class="form-control m-b-10" placeholder="Direccion"></textarea>
-                            </div>
-                            </br>
-                            <!--
-                            <div class="form-group">
-                    
-                                <label for="exampleInputEmail1">Email address</label>
-                             
-                                <input type="email" class="form-control input-sm" id="exampleInputEmail1" placeholder="Enter email">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                 
-                                 <label for="exampleInputPassword1">Password</label>
-                                 
-                                <input type="password" class="form-control input-sm" id="exampleInputPassword1" placeholder="Password">
-                            </div>
-                            </br>
-                            -->
-                            <!--
-                            <p>Some Help level texts here...</p>
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <span class="btn btn-file btn-sm btn-alt">
-                                    <span class="fileupload-new">Select file</span>
-                                    <span class="fileupload-exists">Change</span>
-                                    <input type="file" />
-                                </span>
-                                <span class="fileupload-preview"></span>
-                                <a href="#" class="close close-pic fileupload-exists" data-dismiss="fileupload">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </div>
-                            -->
+                    <?php
+                        include('php/lapso.php');
+
+                        $lapso = new Lapso();
+
+                        if ($lapso->verificarSiExistePeriodo()) {
                             
-                            <button type="submit" name="registrarUsuario" class="btn btn-sm m-t-10">Registrar</button>
-                            <!--
-                            <button type="submit" class="btn btn-sm m-t-10">Cancel</button>
-                            -->
-                        </form>
+                            $resultados = $lapso->listarPeriodo();
+
+                            echo "<form role='form' method='post'>";
+                                echo "<div class='form-group'><input type='text' name='lapso' class='form-control input-sm m-b-10' placeholder='Numero de Lapso'></div></br>";
+                                echo "<div class='form-group'>";
+                                    echo "<select name='id_periodo' class='select' style='width: 100%;'>";
+                                    while ($row = mysql_fetch_row($resultados)) {    
+                                        echo "<option value='".$row[0]."'>".$row[1]."</option>";
+                                    }    
+                                    echo "</select>";
+                                echo "</div></br>";
+                                echo "<button type='submit' name='registrarLapso' class='btn btn-sm m-t-10'>Registrar</button>";
+                            echo "</form>";
+
+                            if (isset($_POST['registrarLapso'])) {
+
+                                $num_lapso = $_POST['lapso'];
+                                $id_periodo = $_POST['id_periodo'];
+                              
+                                $lapso = new Lapso($num_lapso, $id_periodo);
+                                $respuestaRegistro = $lapso->registrarLapso();
+
+                                unset($_POST);
+                                $_POST = array();
+
+                            }
+                        }
+                        else {
+                            echo "<ol class='breadcrumb hidden-xs' align='center'><li class='active'>Registrar Periodo</li></ol>";
+                        }    
+                    ?>    
+                        
                     </div>
                 </div>
             

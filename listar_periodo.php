@@ -204,6 +204,19 @@
                         </ul>
                     </li>
                     <li class="dropdown">
+                        <a class="sa-side-user" href="">
+                            <span class="menu-item">Lapso</span>
+                        </a>
+                        <ul class="list-unstyled menu-item">
+                            <li><a href="crear_lapso.php">Crear</a></li>
+                            <li><a href="listar_lapso.php">Listar</a></li>
+                            <!--
+                            <li><a href="form-examples.html">Form Examples</a></li>
+                            <li><a href="form-validation.html">Form Validation</a></li>
+                            -->
+                        </ul>
+                    </li>
+                    <li class="dropdown">
                         <a class="sa-side-photos" href="">
                             <span class="menu-item">Clientes</span>
                         </a>
@@ -285,19 +298,7 @@
                         </a>
                     </li>
                     <!--
-                    <li class="dropdown">
-                        <a class="sa-side-page" href="">
-                            <span class="menu-item">Pages</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="list-view.html">List View</a></li>
-                            <li><a href="profile-page.html">Profile Page</a></li>
-                            <li><a href="messages.html">Messages</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="404.html">404 Error</a></li>
-                        </ul>
-                    </li>
-                    -->
+
                 </ul>
 
             </aside>

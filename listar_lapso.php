@@ -229,7 +229,7 @@
                             -->
                         </ul>
                     </li>
-
+                    
                     <li>
                         <a class="sa-side-chart" href="charts.php">
                             <span class="menu-item">Graficos</span>
@@ -264,7 +264,7 @@
                     <li class="active">Datos</li>
                 </ol>
                 
-                <h4 class="page-title">Lista de Roles</h4>
+                <h4 class="page-title">Lista de Lapso</h4>
                                     
 
                 <!-- Table Hover -->
@@ -273,18 +273,19 @@
                     <div class="table-responsive overflow">
 
                         <?php
-                            include('php/rol.php');
+                            include('php/lapso.php');
 
-                            $rol = new Rol();
+                            $lapso = new Lapso();
 
-                            $resultado = $rol->listarRol();
+                            $resultado = $lapso->listarLapso();
                             $numero_registros = mysql_num_rows($resultado);
 
                             if ($numero_registros > 0) {
                                 echo "<table class='table table-bordered table-hover tile'>";
                                     echo "<thead>";
                                         echo "<tr>";
-                                            echo "<th>Denominacion</th>";
+                                            echo "<th>Numero de Lapso</th>";
+                                            echo "<th>Periodo</th>";
                                         echo "</tr>";
                                     echo "</thead>";
                                     echo "<tbody>";
@@ -292,6 +293,7 @@
                                     while ($row = mysql_fetch_row($resultado)) {
                                         echo "<tr>";
                                             echo "<td>".$row[0]."</td>";
+                                            echo "<td>".$row[1]."</td>";
                                         echo "</tr>";
                                     }
 
@@ -299,7 +301,7 @@
                                 echo "</table>";
                             }
                             else {
-                                echo "<h4 class='page-title'>No hay roles registrados</h4>";
+                                echo "<h4 class='page-title'>No se ha registrado el periodo aun, por lo tanto no hay lapsos.</h4>";
                             }
                         ?>
                         <!--

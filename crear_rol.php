@@ -204,6 +204,19 @@
                         </ul>
                     </li>
                     <li class="dropdown">
+                        <a class="sa-side-user" href="">
+                            <span class="menu-item">Lapso</span>
+                        </a>
+                        <ul class="list-unstyled menu-item">
+                            <li><a href="crear_lapso.php">Crear</a></li>
+                            <li><a href="listar_lapso.php">Listar</a></li>
+                            <!--
+                            <li><a href="form-examples.html">Form Examples</a></li>
+                            <li><a href="form-validation.html">Form Validation</a></li>
+                            -->
+                        </ul>
+                    </li>
+                    <li class="dropdown">
                         <a class="sa-side-shop" href="">
                             <span class="menu-item">Clientes</span>
                         </a>
@@ -217,57 +230,6 @@
                         </ul>
                     </li>
 
-                    <!--
-                    <li>
-                        <a class="sa-side-typography" href="typography.html">
-                            <span class="menu-item">Typography</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-widget" href="content-widgets.html">
-                            <span class="menu-item">Widgets</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-table" href="tables.html">
-                            <span class="menu-item">Tables</span>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a class="sa-side-form" href="">
-                            <span class="menu-item">Form</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="form-elements.html">Basic Form Elements</a></li>
-                            <li><a href="form-components.html">Form Components</a></li>
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="sa-side-ui" href="">
-                            <span class="menu-item">User Interface</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="buttons.html">Buttons</a></li>
-                            <li><a href="labels.html">Labels</a></li>
-                            <li><a href="images-icons.html">Images &amp; Icons</a></li>
-                            <li><a href="alerts.html">Alerts</a></li>
-                            <li><a href="media.html">Media</a></li>
-                            <li><a href="components.html">Components</a></li>
-                            <li><a href="other-components.html">Others</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="sa-side-photos" href="">
-                            <span class="menu-item">PHOTO GALLERY</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            
-                            <li><a href="photo-gallery-alt.html">Photo Gallery</a></li>
-                        </ul>
-                    </li>
-                    -->
                     <li>
                         <a class="sa-side-chart" href="charts.php">
                             <span class="menu-item">Graficos</span>
@@ -483,40 +445,7 @@
                 <h4 class="page-title">Registrar Usuario</h4>
                             
                 <!-- Basic -->
-                <!--
-                <div class="block-area" id="basic">
-                    <h3 class="block-title">Basic Example</h3>
-                    <form role="form">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control input-sm" id="exampleInputEmail1" placeholder="Enter email">
-                        </div>
-                        
-                        <div class="form-group">
-                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control input-sm" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        
-                        <p>Some Help level texts here...</p>
-                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <span class="btn btn-file btn-sm btn-alt">
-                                <span class="fileupload-new">Select file</span>
-                                <span class="fileupload-exists">Change</span>
-                                <input type="file" />
-                            </span>
-                            <span class="fileupload-preview"></span>
-                            <a href="#" class="close close-pic fileupload-exists" data-dismiss="fileupload">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-sm m-t-10">Login</button>
-                        <button type="submit" class="btn btn-sm m-t-10">Cancel</button>
-                    </form>
-                </div>
 
-                <hr class="whiter m-t-20" />
-                -->
                 <!-- Basic with panel-->
                 <div class="block-area" id="basic" style="max-width: 500px;">
                     <!--

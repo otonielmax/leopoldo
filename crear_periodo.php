@@ -204,6 +204,19 @@
                         </ul>
                     </li>
                     <li class="dropdown">
+                        <a class="sa-side-user" href="">
+                            <span class="menu-item">Lapso</span>
+                        </a>
+                        <ul class="list-unstyled menu-item">
+                            <li><a href="crear_lapso.php">Crear</a></li>
+                            <li><a href="listar_lapso.php">Listar</a></li>
+                            <!--
+                            <li><a href="form-examples.html">Form Examples</a></li>
+                            <li><a href="form-validation.html">Form Validation</a></li>
+                            -->
+                        </ul>
+                    </li>
+                    <li class="dropdown">
                         <a class="sa-side-shop" href="">
                             <span class="menu-item">Clientes</span>
                         </a>
