@@ -524,73 +524,28 @@
                     -->
 
                     <?php
-                        include('php/usuario.php');
+                        include('php/rol.php');
 
-                        if (isset($_POST['registrarUsuario'])) {
+                        if (isset($_POST['registrarRol'])) {
 
-                            $nombre1 = $_POST['nombre1'];
-                            $nombre2 = $_POST['nombre2'];
-                            $apellido1 = $_POST['apellido1'];
-                            $apellido2 = $_POST['apellido2'];
-                            $direccion = $_POST['direccion'];
-                            $cedula = $_POST['cedula'];
-                            $fecha_nac = $_POST['fecha_nac'];
-
-                            /*
-                            if (!isset($_POST['coordenadas'])) {
-                                $coordenadas = "";  
-                            }
-                            else {
-                                $coordenadas = $_POST['coordenadas'];
-                            }
-                            */
-
+                            $descripcion = $_POST['descripcion'];
                           
-                            $user = new Usuario($nombre1, $nombre2, $apellido1, $apellido2, $cedula, $fecha_nac, $direccion);
-                            $respuestaRegistro = $user->registrarUsuario();
+                            $rol = new Rol($descripcion);
+                            $respuestaRegistro = $rol->registrarRol();
 
                             unset($_POST);
                             $_POST = array();
 
-                            //$user->model->cerrarConexion();
-                            /*
-                            if ($respuestaRegistro == 0) {
-                                //header("Location: login.php");
-                            }
-                            */
                         }
                     ?>    
 
                     <div class="tile p-15">
                         <form role="form" method="post">
                             <div class="form-group">
-                                <input type="text" name="nombre1" class="form-control input-sm m-b-10" placeholder="Primer Nombre">
+                                <input type="text" name="descripcion" class="form-control input-sm m-b-10" placeholder="Denominacion de Rol">
                             </div>
                             </br>
-                            <div class="form-group">
-                                <input type="text" name="nombre2" class="form-control input-sm m-b-10" placeholder="Segundo Nombre (Opcional)">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="apellido1" class="form-control input-sm m-b-10" placeholder="Primer Apellido">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="apellido2" class="form-control input-sm m-b-10" placeholder="Segundo Apellido (Opcional)">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="cedula" class="form-control input-sm m-b-10" placeholder="Cedula">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="date" name="fecha_nac" class="form-control input-sm m-b-10">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <textarea name="direccion" class="form-control m-b-10" placeholder="Direccion"></textarea>
-                            </div>
-                            </br>
+                            
                             <!--
                             <div class="form-group">
                     
@@ -622,7 +577,7 @@
                             </div>
                             -->
                             
-                            <button type="submit" name="registrarUsuario" class="btn btn-sm m-t-10">Registrar</button>
+                            <button type="submit" name="registrarRol" class="btn btn-sm m-t-10">Registrar</button>
                             <!--
                             <button type="submit" class="btn btn-sm m-t-10">Cancel</button>
                             -->

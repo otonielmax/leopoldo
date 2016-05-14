@@ -480,7 +480,7 @@
                     <li class="active">Datos</li>
                 </ol>
                 
-                <h4 class="page-title">Registrar Usuario</h4>
+                <h4 class="page-title">Registrar Periodo</h4>
                             
                 <!-- Basic -->
                 <!--
@@ -524,17 +524,11 @@
                     -->
 
                     <?php
-                        include('php/usuario.php');
+                        include('php/periodo.php');
 
-                        if (isset($_POST['registrarUsuario'])) {
+                        if (isset($_POST['registrarPeriodo'])) {
 
-                            $nombre1 = $_POST['nombre1'];
-                            $nombre2 = $_POST['nombre2'];
-                            $apellido1 = $_POST['apellido1'];
-                            $apellido2 = $_POST['apellido2'];
-                            $direccion = $_POST['direccion'];
-                            $cedula = $_POST['cedula'];
-                            $fecha_nac = $_POST['fecha_nac'];
+                            $anho = $_POST['anho'];
 
                             /*
                             if (!isset($_POST['coordenadas'])) {
@@ -546,13 +540,13 @@
                             */
 
                           
-                            $user = new Usuario($nombre1, $nombre2, $apellido1, $apellido2, $cedula, $fecha_nac, $direccion);
-                            $respuestaRegistro = $user->registrarUsuario();
+                            $periodo = new Periodo($anho);
+                            $respuestaRegistro = $periodo->registrarPeriodo();
 
                             unset($_POST);
                             $_POST = array();
 
-                            //$user->model->cerrarConexion();
+                            //$periodo->model->cerrarConexion();
                             /*
                             if ($respuestaRegistro == 0) {
                                 //header("Location: login.php");
@@ -564,33 +558,10 @@
                     <div class="tile p-15">
                         <form role="form" method="post">
                             <div class="form-group">
-                                <input type="text" name="nombre1" class="form-control input-sm m-b-10" placeholder="Primer Nombre">
+                                <input type="text" name="anho" class="form-control input-sm m-b-10" placeholder="Periodo Academico">
                             </div>
                             </br>
-                            <div class="form-group">
-                                <input type="text" name="nombre2" class="form-control input-sm m-b-10" placeholder="Segundo Nombre (Opcional)">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="apellido1" class="form-control input-sm m-b-10" placeholder="Primer Apellido">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="apellido2" class="form-control input-sm m-b-10" placeholder="Segundo Apellido (Opcional)">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="cedula" class="form-control input-sm m-b-10" placeholder="Cedula">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="date" name="fecha_nac" class="form-control input-sm m-b-10">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <textarea name="direccion" class="form-control m-b-10" placeholder="Direccion"></textarea>
-                            </div>
-                            </br>
+                            
                             <!--
                             <div class="form-group">
                     
@@ -622,7 +593,7 @@
                             </div>
                             -->
                             
-                            <button type="submit" name="registrarUsuario" class="btn btn-sm m-t-10">Registrar</button>
+                            <button type="submit" name="registrarPeriodo" class="btn btn-sm m-t-10">Registrar</button>
                             <!--
                             <button type="submit" class="btn btn-sm m-t-10">Cancel</button>
                             -->
