@@ -29,23 +29,6 @@
             <div class="media-body">
                 <div class="media" id="top-menu">
                     
-                    <!--
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="messages" class="drawer-toggle" href="">
-                            <i class="sa-top-message"></i>
-                            <i class="n-count animated">5</i>
-                            <span>Messages</span>
-                        </a>
-                    </div>
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="notifications" class="drawer-toggle" href="">
-                            <i class="sa-top-updates"></i>
-                            <i class="n-count animated">9</i>
-                            <span>Updates</span>
-                        </a>
-                    </div>
-                    -->
-                    
 
                     <div id="time" class="pull-right">
                         <span id="hours"></span>
@@ -390,28 +373,36 @@
 
                         <?php
 
+                            //include('php/config.php');
+
                             include('php/estudiante.php');
+                            //include('php/usuario.php');
 
                             $estudiante = new Estudiante();
 
                             if ($estudiante->existenUsuarios()) {
                                 $resultados = $estudiante->listarUsuarios();
 
-                                $num = mysql_fetch_row($resultados);
+                                $num = mysql_num_rows($resultados);
                                 if ($num > 0) {
+
                                     echo "<form role='form' method='post'>";
-                                    echo "<div class='form-group'>";
-                                        echo "<select name='id_usuario' class='select' style='width: 100%;'>";
-                                        while ($row = mysql_fetch_row($resultados)) {    
-                                            echo "<option value='".$row[0]."'>".$row[1]." ".$row[2]."</option>";
-                                        }    
-                                        echo "</select>";
-                                    echo "</div></br>";
-                                    echo "<button type='submit' name='registrarEstudiante' class='btn btn-sm     m-t-10'>Registrar</button>";
+                                        echo "<div class='form-group'>";
+                                            echo "<select name='id_usuario' class='select' style='width: 100%;'>";
+                                            while ($row = mysql_fetch_row($resultados)) {    
+                                                echo "<option value='".$row[0]."'>".$row[1]." ".$row[2]."</option>";
+                                            }    
+                                            echo "</select>";
+                                        echo "</div></br>";
+                                        echo "<button type='submit' name='registrarEstudiante' class='btn btn-sm m-t-10'>Registrar</button>";
                                     echo "</form>";
                                 }
                                 else {
-                                    echo "<form role='form' method='post'>";
+                                    echo "<h4 class='page-title'>Hubo un error en el sistema por favor vuelva a intentar</h4>";
+                                } 
+                            }
+                            else {
+                                echo "<form role='form' method='post'>";
                                         echo "<div class='form-group'><input type='text' name='nombre1' class='form-control input-sm m-b-10' placeholder='Primer Nombre' required></div></br>";
                                         echo "<div class='form-group'><input type='text' name='nombre2' class='form-control input-sm m-b-10' placeholder='Segundo Nombre (Opcional)'></div></br>";
                                         echo "<div class='form-group'><input type='text' name='apellido1' class='form-control input-sm m-b-10' placeholder='Primer Apellido' required></div></br>";
@@ -420,9 +411,7 @@
                                         echo "<div class='form-group'><input type='date' name='fecha_nac' class='form-control input-sm m-b-10' required></div></br>";
                                         echo "<div class='form-group'><textarea name='direccion' class='form-control m-b-10' placeholder='Direccion' required></textarea></div></br>";
                                         echo "<button type='submit' name='registrarUsuario' class='btn btn-sm m-t-10'>Registrar</button>";
-                        
-                                }
-                                
+                                echo "</form>";
                             }
 
                             if (isset($_POST['registrarEstudiante'])) {
@@ -439,6 +428,27 @@
                                 else {
                                     echo "<h4 class='page-title'>El estudiante ya se encuentra asignado a un usuario</h4>";
                                 }
+                            }
+
+                            //include_once('php/usuario.php');
+
+                            if (isset($_POST['registrarUsuario'])) {
+
+                                $nombre1 = $_POST['nombre1'];
+                                $nombre2 = $_POST['nombre2'];
+                                $apellido1 = $_POST['apellido1'];
+                                $apellido2 = $_POST['apellido2'];
+                                $direccion = $_POST['direccion'];
+                                $cedula = $_POST['cedula'];
+                                $fecha_nac = $_POST['fecha_nac'];
+
+                          
+                                $estudiante = new Estudiante();
+                                $estudiante->registrarEstudianteCompleto($nombre1, $nombre2, $apellido1, $apellido2, $cedula, $fecha_nac, $direccion);
+                            
+                                unset($_POST);
+                                $_POST = array();
+
                             }        
                         ?> 
                     </div>

@@ -116,6 +116,19 @@
                     </li>
                     <li class="dropdown">
                         <a class="sa-side-user" href="">
+                            <span class="menu-item">Estudiantes</span>
+                        </a>
+                        <ul class="list-unstyled menu-item">
+                            <li><a href="crear_estudiantes.php">Crear</a></li>
+                            <li><a href="listar_estudiantes.php">Listar</a></li>
+                            <!--
+                            <li><a href="form-examples.html">Form Examples</a></li>
+                            <li><a href="form-validation.html">Form Validation</a></li>
+                            -->
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="sa-side-user" href="">
                             <span class="menu-item">Rol</span>
                         </a>
                         <ul class="list-unstyled menu-item">
@@ -423,15 +436,6 @@
                             $cedula = $_POST['cedula'];
                             $fecha_nac = $_POST['fecha_nac'];
 
-                            /*
-                            if (!isset($_POST['coordenadas'])) {
-                                $coordenadas = "";  
-                            }
-                            else {
-                                $coordenadas = $_POST['coordenadas'];
-                            }
-                            */
-
                           
                             $user = new Usuario($nombre1, $nombre2, $apellido1, $apellido2, $cedula, $fecha_nac, $direccion);
                             $respuestaRegistro = $user->registrarUsuario();
@@ -439,12 +443,6 @@
                             unset($_POST);
                             $_POST = array();
 
-                            //$user->model->cerrarConexion();
-                            /*
-                            if ($respuestaRegistro == 0) {
-                                //header("Location: login.php");
-                            }
-                            */
                         }
                     ?>    
 
