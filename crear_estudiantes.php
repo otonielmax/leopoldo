@@ -116,6 +116,19 @@
                     </li>
                     <li class="dropdown">
                         <a class="sa-side-user" href="">
+                            <span class="menu-item">Estudiantes</span>
+                        </a>
+                        <ul class="list-unstyled menu-item">
+                            <li><a href="crear_estudiantes.php">Crear</a></li>
+                            <li><a href="listar_estudiantes.php">Listar</a></li>
+                            <!--
+                            <li><a href="form-examples.html">Form Examples</a></li>
+                            <li><a href="form-validation.html">Form Validation</a></li>
+                            -->
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="sa-side-user" href="">
                             <span class="menu-item">Rol</span>
                         </a>
                         <ul class="list-unstyled menu-item">
@@ -367,153 +380,67 @@
                     <li class="active">Datos</li>
                 </ol>
                 
-                <h4 class="page-title">Registrar Usuario</h4>
+                <h4 class="page-title">Registrar Estudiante</h4>
                             
-                <!-- Basic -->
-                <!--
-                <div class="block-area" id="basic">
-                    <h3 class="block-title">Basic Example</h3>
-                    <form role="form">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control input-sm" id="exampleInputEmail1" placeholder="Enter email">
-                        </div>
-                        
-                        <div class="form-group">
-                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control input-sm" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        
-                        <p>Some Help level texts here...</p>
-                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                            <span class="btn btn-file btn-sm btn-alt">
-                                <span class="fileupload-new">Select file</span>
-                                <span class="fileupload-exists">Change</span>
-                                <input type="file" />
-                            </span>
-                            <span class="fileupload-preview"></span>
-                            <a href="#" class="close close-pic fileupload-exists" data-dismiss="fileupload">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-sm m-t-10">Login</button>
-                        <button type="submit" class="btn btn-sm m-t-10">Cancel</button>
-                    </form>
-                </div>
-
-                <hr class="whiter m-t-20" />
-                -->
-                <!-- Basic with panel-->
                 <div class="block-area" id="basic" style="max-width: 500px;">
                     <!--
                     <h3 class="block-title">Basic Example with Panel</h3>
-                    -->
-
-                    <?php
-                        include('php/usuario.php');
-
-                        if (isset($_POST['registrarUsuario'])) {
-
-                            $nombre1 = $_POST['nombre1'];
-                            $nombre2 = $_POST['nombre2'];
-                            $apellido1 = $_POST['apellido1'];
-                            $apellido2 = $_POST['apellido2'];
-                            $direccion = $_POST['direccion'];
-                            $cedula = $_POST['cedula'];
-                            $fecha_nac = $_POST['fecha_nac'];
-
-                            /*
-                            if (!isset($_POST['coordenadas'])) {
-                                $coordenadas = "";  
-                            }
-                            else {
-                                $coordenadas = $_POST['coordenadas'];
-                            }
-                            */
-
-                          
-                            $user = new Usuario($nombre1, $nombre2, $apellido1, $apellido2, $cedula, $fecha_nac, $direccion);
-                            $respuestaRegistro = $user->registrarUsuario();
-
-                            unset($_POST);
-                            $_POST = array();
-
-                            //$user->model->cerrarConexion();
-                            /*
-                            if ($respuestaRegistro == 0) {
-                                //header("Location: login.php");
-                            }
-                            */
-                        }
-                    ?>    
-
+                    -->   
                     <div class="tile p-15">
-                        <form role="form" method="post">
-                            <div class="form-group">
-                                <input type="text" name="nombre1" class="form-control input-sm m-b-10" placeholder="Primer Nombre" required>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="nombre2" class="form-control input-sm m-b-10" placeholder="Segundo Nombre (Opcional)">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="apellido1" class="form-control input-sm m-b-10" placeholder="Primer Apellido" required>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="apellido2" class="form-control input-sm m-b-10" placeholder="Segundo Apellido (Opcional)">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="cedula" class="form-control input-sm m-b-10" placeholder="Cedula" required>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="date" name="fecha_nac" class="form-control input-sm m-b-10" required>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <textarea name="direccion" class="form-control m-b-10" placeholder="Direccion" required></textarea>
-                            </div>
-                            </br>
-                            <!--
-                            <div class="form-group">
-                    
-                                <label for="exampleInputEmail1">Email address</label>
-                             
-                                <input type="email" class="form-control input-sm" id="exampleInputEmail1" placeholder="Enter email">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                 
-                                 <label for="exampleInputPassword1">Password</label>
-                                 
-                                <input type="password" class="form-control input-sm" id="exampleInputPassword1" placeholder="Password">
-                            </div>
-                            </br>
-                            -->
-                            <!--
-                            <p>Some Help level texts here...</p>
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <span class="btn btn-file btn-sm btn-alt">
-                                    <span class="fileupload-new">Select file</span>
-                                    <span class="fileupload-exists">Change</span>
-                                    <input type="file" />
-                                </span>
-                                <span class="fileupload-preview"></span>
-                                <a href="#" class="close close-pic fileupload-exists" data-dismiss="fileupload">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </div>
-                            -->
-                            
-                            <button type="submit" name="registrarUsuario" class="btn btn-sm m-t-10">Registrar</button>
-                            <!--
-                            <button type="submit" class="btn btn-sm m-t-10">Cancel</button>
-                            -->
-                        </form>
+
+                        <?php
+
+                            include('php/estudiante.php');
+
+                            $estudiante = new Estudiante();
+
+                            if ($estudiante->existenUsuarios()) {
+                                $resultados = $estudiante->listarUsuarios();
+
+                                $num = mysql_fetch_row($resultados);
+                                if ($num > 0) {
+                                    echo "<form role='form' method='post'>";
+                                    echo "<div class='form-group'>";
+                                        echo "<select name='id_usuario' class='select' style='width: 100%;'>";
+                                        while ($row = mysql_fetch_row($resultados)) {    
+                                            echo "<option value='".$row[0]."'>".$row[1]." ".$row[2]."</option>";
+                                        }    
+                                        echo "</select>";
+                                    echo "</div></br>";
+                                    echo "<button type='submit' name='registrarEstudiante' class='btn btn-sm     m-t-10'>Registrar</button>";
+                                    echo "</form>";
+                                }
+                                else {
+                                    echo "<form role='form' method='post'>";
+                                        echo "<div class='form-group'><input type='text' name='nombre1' class='form-control input-sm m-b-10' placeholder='Primer Nombre' required></div></br>";
+                                        echo "<div class='form-group'><input type='text' name='nombre2' class='form-control input-sm m-b-10' placeholder='Segundo Nombre (Opcional)'></div></br>";
+                                        echo "<div class='form-group'><input type='text' name='apellido1' class='form-control input-sm m-b-10' placeholder='Primer Apellido' required></div></br>";
+                                        echo "<div class='form-group'><input type='text' name='apellido2' class='form-control input-sm m-b-10' placeholder='Segundo Apellido (Opcional)'></div></br>";
+                                        echo "<div class='form-group'><input type='text' name='cedula' class='form-control input-sm m-b-10' placeholder='Cedula' required></div></br>";
+                                        echo "<div class='form-group'><input type='date' name='fecha_nac' class='form-control input-sm m-b-10' required></div></br>";
+                                        echo "<div class='form-group'><textarea name='direccion' class='form-control m-b-10' placeholder='Direccion' required></textarea></div></br>";
+                                        echo "<button type='submit' name='registrarUsuario' class='btn btn-sm m-t-10'>Registrar</button>";
+                        
+                                }
+                                
+                            }
+
+                            if (isset($_POST['registrarEstudiante'])) {
+
+                                if (!$estudiante->validarSiExtudianteExiste($_POST['id_usuario'])) {
+                                    $id_usuario = $_POST['id_usuario'];
+                      
+                                    $estudiante = new Estudiante($id_usuario);
+                                    $respuestaRegistro = $estudiante->registrarEstudiante();
+
+                                    unset($_POST);
+                                    $_POST = array();
+                                }
+                                else {
+                                    echo "<h4 class='page-title'>El estudiante ya se encuentra asignado a un usuario</h4>";
+                                }
+                            }        
+                        ?> 
                     </div>
                 </div>
             

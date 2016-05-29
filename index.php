@@ -8,7 +8,7 @@
         <meta name="description" content="Violate Responsive Admin Template">
         <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
 
-        <title>Sistema ICE</title>
+        <title>Leopoldo Aguerrevere</title>
             
         <!-- CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -165,69 +165,72 @@
                         </a>
                     </li>
                     <li class="dropdown">
-                        <a class="sa-side-form" href="">
-                            <span class="menu-item">Clientes</span>
+                        <a class="sa-side-user" href="">
+                            <span class="menu-item">Usuario</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="crear_clientes.php">Crear</a></li>
+                            <li><a href="crear_usuario.php">Crear</a></li>
+                            <li><a href="listar_usuario.php">Listar</a></li>
                             <!--
-                            <li><a href="form-components.html">Form Components</a></li>
                             <li><a href="form-examples.html">Form Examples</a></li>
                             <li><a href="form-validation.html">Form Validation</a></li>
                             -->
                         </ul>
                     </li>
-                    <!--
-                    <li>
-                        <a class="sa-side-typography" href="typography.html">
-                            <span class="menu-item">Typography</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-widget" href="content-widgets.html">
-                            <span class="menu-item">Widgets</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="sa-side-table" href="tables.html">
-                            <span class="menu-item">Tables</span>
-                        </a>
-                    </li>
                     <li class="dropdown">
-                        <a class="sa-side-form" href="">
-                            <span class="menu-item">Form</span>
+                        <a class="sa-side-user" href="">
+                            <span class="menu-item">Rol</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="form-elements.html">Basic Form Elements</a></li>
-                            <li><a href="form-components.html">Form Components</a></li>
+                            <li><a href="crear_rol.php">Crear</a></li>
+                            <li><a href="listar_rol.php">Listar</a></li>
+                            <!--
                             <li><a href="form-examples.html">Form Examples</a></li>
                             <li><a href="form-validation.html">Form Validation</a></li>
+                            -->
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="sa-side-ui" href="">
-                            <span class="menu-item">User Interface</span>
+                        <a class="sa-side-user" href="">
+                            <span class="menu-item">Periodo</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="buttons.html">Buttons</a></li>
-                            <li><a href="labels.html">Labels</a></li>
-                            <li><a href="images-icons.html">Images &amp; Icons</a></li>
-                            <li><a href="alerts.html">Alerts</a></li>
-                            <li><a href="media.html">Media</a></li>
-                            <li><a href="components.html">Components</a></li>
-                            <li><a href="other-components.html">Others</a></li>
+                            <li><a href="crear_periodo.php">Crear</a></li>
+                            <li><a href="listar_periodo.php">Listar</a></li>
+                            <!--
+                            <li><a href="form-examples.html">Form Examples</a></li>
+                            <li><a href="form-validation.html">Form Validation</a></li>
+                            -->
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="sa-side-photos" href="">
-                            <span class="menu-item">PHOTO GALLERY</span>
+                        <a class="sa-side-user" href="">
+                            <span class="menu-item">Lapso</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            
-                            <li><a href="photo-gallery-alt.html">Photo Gallery</a></li>
+                            <li><a href="crear_lapso.php">Crear</a></li>
+                            <li><a href="listar_lapso.php">Listar</a></li>
+                            <!--
+                            <li><a href="form-examples.html">Form Examples</a></li>
+                            <li><a href="form-validation.html">Form Validation</a></li>
+                            -->
                         </ul>
                     </li>
-                    -->
+                    <li class="dropdown">
+                        <a class="sa-side-shop" href="">
+                            <span class="menu-item">Clientes</span>
+                        </a>
+                        <ul class="list-unstyled menu-item">
+                            <li><a href="crear_clientes.php">Crear</a></li>
+                            <li><a href="listar_clientes.php">Listar</a></li>
+                            <!--
+                            <li><a href="form-examples.html">Form Examples</a></li>
+                            <li><a href="form-validation.html">Form Validation</a></li>
+                            -->
+                        </ul>
+                    </li>
+
+                    
                     <li>
                         <a class="sa-side-chart" href="charts.php">
                             <span class="menu-item">Graficos</span>
@@ -245,20 +248,6 @@
                             <span class="menu-item">Calendario</span>
                         </a>
                     </li>
-                    <!--
-                    <li class="dropdown">
-                        <a class="sa-side-page" href="">
-                            <span class="menu-item">Pages</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="list-view.html">List View</a></li>
-                            <li><a href="profile-page.html">Profile Page</a></li>
-                            <li><a href="messages.html">Messages</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="404.html">404 Error</a></li>
-                        </ul>
-                    </li>
-                    -->
                 </ul>
 
             </aside>

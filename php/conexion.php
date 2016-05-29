@@ -3,7 +3,7 @@
 	{	
 		
 		public $usuario = 'root';
-		public $pass = '21091361';
+		public $pass = '';
 		public $baseDeDatos = 'leopoldo_aguerrevere';
 		
 		/*
