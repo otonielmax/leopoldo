@@ -8,7 +8,7 @@
         <meta name="description" content="Violate Responsive Admin Template">
         <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
 
-        <title>Leopoldo Aguerrevere</title>
+        <title>Sistema de Eventos</title>
             
         <!-- CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -16,15 +16,15 @@
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/form.css" rel="stylesheet">
         <link href="css/calendar.css" rel="stylesheet">
+        <link href="css/media-player.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link href="css/icons.css" rel="stylesheet">
         <link href="css/generics.css" rel="stylesheet"> 
     </head>
     <body id="skin-blur-violate">
-
         <header id="header" class="media">
             <a href="" id="menu-toggle"></a> 
-            <a class="logo pull-left" href="index.php">Sistema de Gestion</a>
+            <a class="logo pull-left" href="index.php">Gestion de Eventos</a>
             
             <div class="media-body">
                 <div class="media" id="top-menu">
@@ -75,7 +75,7 @@
                     <!-- Profile Menu -->
                     <div class="text-center s-widget m-b-25 dropdown" id="profile-menu">
                         <a href="" data-toggle="dropdown">
-                            <img class="profile-pic animated" src="img/usuario.png" alt="">
+                            <img class="profile-pic animated" src="img/yumay.jpg" alt="">
                         </a>
                         <ul class="dropdown-menu profile-menu">
                             <li><a href="">Mi Perfil</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
@@ -83,8 +83,9 @@
                             <li><a href="">Configuracion</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
                             <li><a href="">Salir</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
                         </ul>
-                        <h4 class="m-0">Ramiro Gonzalez</h4>
-                        @ramiro_g
+                        <h4 class="m-0">Yusmay Davila</h4>
+                        yourlov4ever@gmail.com </br>    
+                        +58 0426 417.03.96
                     </div>
                     
                     <!-- Calendar -->
@@ -98,131 +99,123 @@
                 <ul class="list-unstyled side-menu">
                     <li class="active">
                         <a class="sa-side-home" href="index.php">
-                            <span class="menu-item">Dashboard</span>
+                            <span class="menu-item">Home</span>
                         </a>
                     </li>
                     <li class="dropdown">
-                        <a class="sa-side-user" href="">
-                            <span class="menu-item">Usuario</span>
+                        <a class="sa-side-eventos" href="">
+                            <span class="menu-item">Eventos</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="crear_usuario.php">Crear</a></li>
-                            <li><a href="listar_usuario.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
+                            <li><a href="crear_eventos.php">Crear</a></li>
+                            <li><a href="listar_eventos.php">Lista</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="sa-side-user" href="">
-                            <span class="menu-item">Rol</span>
+                        <a class="sa-side-participantes" href="">
+                            <span class="menu-item">Participantes</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="crear_rol.php">Crear</a></li>
-                            <li><a href="listar_rol.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
+                            <li><a href="crear_participantes.php">Crear</a></li>
+                            <li><a href="listar_participantes.php">Lista</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="sa-side-user" href="">
-                            <span class="menu-item">Periodo</span>
+                    
+                    <li>
+                        <a class="sa-side-chart" href="charts.php">
+                            <span class="menu-item">Graficos</span>
                         </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="crear_periodo.php">Crear</a></li>
-                            <li><a href="listar_periodo.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
-                        </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="sa-side-user" href="">
-                            <span class="menu-item">Lapso</span>
+                    <li>
+                        <a class="sa-side-calendar" href="calendar.php">
+                            <span class="menu-item">Calendario</span>
                         </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="crear_lapso.php">Crear</a></li>
-                            <li><a href="listar_lapso.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
-                        </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="sa-side-shop" href="">
-                            <span class="menu-item">Grado</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="crear_grado.php">Crear</a></li>
-                            <li><a href="listar_grado.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
-                        </ul>
-                    </li>
+                    
                 </ul>
-
             </aside>
         
             <!-- Content -->
-            <section id="content" class="container">     
-                <!-- Breadcrumb -->
+            <section id="content" class="container">
+            
                 
+                
+                <!-- Breadcrumb -->
                 <ol class="breadcrumb hidden-xs">
                     <li><a href="#">Inicio</a></li>
                     <li><a href="#">Biblioteca</a></li>
                     <li class="active">Datos</li>
                 </ol>
                 
-                <h4 class="page-title">Registrar Grado</h4>
-                            
-                <!-- Basic with panel-->
-                <div class="block-area" id="basic" style="max-width: 500px;">
-                    <!--
-                    <h3 class="block-title">Basic Example with Panel</h3>¨
-                    -->
-                    <div class="tile p-15">
+                <h4 class="page-title">Selecciona un evento</h4>
+                                    
+
+                <!-- Table Hover -->
+                <div class="block-area" id="tableHover">
+                    <!--<h3 class="block-title">Table with Hover Style</h3>-->
+                    <div class="table-responsive overflow">
+
                         <?php
-                            include('php/grado.php');
+                            include('php/eventos.php');
 
-                            if (isset($_POST['registrarGrado'])) {
+                            $evento = new Evento();
 
-                                $nivel = $_POST['nivel'];
-                                $descripcion = $_POST['descripcion'];
-                                  
-                                $grado = new Grado($descripcion);
-                                $respuestaRegistro = $grado->registrarGrado();
+                            $resultado = $evento->listarEvento();
+                            $numero_registros = mysql_num_rows($resultado);
 
-                                unset($_POST);
-                                $_POST = array();
-
-                            }    
+                            if ($numero_registros > 0) {
+                                echo "<form role='form' method='post'>";
+                                        echo "<div class='form-group'>";
+                                            echo "<select name='id_evento' class='select' style='width: 100%;'>";
+                                            while ($row = mysql_fetch_row($resultado)) {    
+                                                echo "<option value='".$row[0]."'>".$row[1]."</option>";
+                                            }    
+                                            echo "</select>";
+                                        echo "</div></br>";
+                                        echo "<button type='submit' name='buscarParticipantes' class='btn btn-sm m-t-10'>Buscar Participantes</button>";
+                                    echo "</form>";
+                            }
+                            else {
+                                echo "<h4 class='page-title'>No hay evento registrado, si deseas registrar uno haz click <a href='crear_eventos.php'>aqui</a></h4>";
+                            }
                         ?>
-                        <form role="form" method="post">
-                            <div class="form-group">
-                                <input type="text" name="nivel" class="form-control input-sm m-b-10" placeholder="Ingresa el nivel de instruccion">
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <input type="text" name="descripcion" class="form-control input-sm m-b-10" placeholder="Ingresa el Grado">
-                            </div>
-                            </br>
-                            <button type="submit" name="registrarGrado" class="btn btn-sm m-t-10">Registrar</button>
-                            <!--
-                            <button type="submit" class="btn btn-sm m-t-10">Cancel</button>
-                            -->
-                        </form>    
-                        
+                        <!--
+                        <table class="table table-bordered table-hover tile">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Username</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Jhon </td>
+                                    <td>Makinton </td>
+                                    <td>@makinton</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Malinda</td>
+                                    <td>Hollaway</td>
+                                    <td>@hollway</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Wayn</td>
+                                    <td>Parnel</td>
+                                    <td>@wayne123</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        -->
                     </div>
                 </div>
-            
+               
             </section>
+            <br/><br/>
         </section>
         
         <!-- Javascript Libraries -->
@@ -231,12 +224,6 @@
         
         <!-- Bootstrap -->
         <script src="js/bootstrap.min.js"></script>
-        
-        <!--  Form Related -->
-        <script src="js/select.min.js"></script> <!-- Custom Select -->
-        <script src="js/icheck.js"></script> <!-- Custom Checkbox + Radio -->
-        <script src="js/fileupload.min.js"></script> <!-- File Upload -->
-        <script src="js/autosize.min.js"></script> <!-- Textare autosize -->
         
         <!-- UX -->
         <script src="js/scroll.min.js"></script> <!-- Custom Scrollbar -->
@@ -248,7 +235,6 @@
         
         <!-- All JS functions -->
         <script src="js/functions.js"></script>
-
     </body>
 </html>
 

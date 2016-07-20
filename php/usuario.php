@@ -17,13 +17,14 @@
 		public $fecha_nac;
 		public $direccion;
 		public $cedula;
+		public $password;
 
 		public $usuario = 'root';
-		public $pass = '21091361';
+		public $pass = '';
 		public $baseDeDatos = 'leopoldo_aguerrevere';
 		public $host = 'localhost';
 		
-		public function __construct($nombre1 = "", $nombre2 = "", $apellido1 = "", $apellido2 = "", $cedula = "", $fecha_nac = "", $direccion = "") 
+		public function __construct($nombre1 = "", $nombre2 = "", $apellido1 = "", $apellido2 = "", $cedula = "", $fecha_nac = "", $direccion = "", $password = "") 
 	 	{
 			$this->nombre1 = $nombre1;
 			$this->nombre2 = $nombre2;
@@ -32,6 +33,7 @@
 			$this->fecha_nac = $fecha_nac;
 			$this->direccion = $direccion;
 			$this->cedula = $cedula;
+			$this->password = $password;
 
 			//$this->model = new Modelo();
 		}
@@ -68,5 +70,15 @@
 			
 		}
 
+		function validarUsuario($cedula, $pass) {
+			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
+			mysql_select_db($this->baseDeDatos, $strConexion);
+
+			$result = mysql_query("SELECT u.id, u.pass, u.activo, u.nombre1, u.apellido1, r.descripcion FROM leopoldo_aguerrevere.usuario AS u JOIN leopoldo_aguerrevere.rol AS r  ON u.id_rol = r.id WHERE cedula = '".$cedula."'");
+
+			mysql_close($strConexion);
+
+			return $result;				
+		}
 	}
 ?>

@@ -13,7 +13,7 @@
 		public $id_usuario;
 
 		public $usuario = 'root';
-		public $pass = '21091361';
+		public $pass = '';
 		public $baseDeDatos = 'leopoldo_aguerrevere';
 		public $host = 'localhost';
 		
@@ -172,6 +172,38 @@
 			mysql_close($strConexion);
 
 			return $result;
+		}
+
+		function listarGrado() {
+			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
+			mysql_select_db($this->baseDeDatos, $strConexion);
+
+			$result = mysql_query("SELECT id, descripcion FROM leopoldo_aguerrevere.grado");
+
+			mysql_close($strConexion);
+
+			return $result;
+			
+		}
+
+		function existenGrados() {
+			//$this->model->crearConexion();
+			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
+			mysql_select_db($this->baseDeDatos, $strConexion);
+
+			$result = mysql_query("SELECT id FROM leopoldo_aguerrevere.grado");
+
+			//$this->model->cerrarConexion();
+			mysql_close($strConexion);
+
+			$registros = mysql_num_rows($result);
+
+			if ($registros > 0) {
+				return TRUE;
+			}
+			else {
+				return FALSE;
+			}
 		}
 	}
 ?>

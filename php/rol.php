@@ -11,6 +11,11 @@
 		//public $usuario;
 		//public $password;
 		public $descripcion;
+
+		public $usuario = 'root';
+		public $pass = '';
+		public $baseDeDatos = 'leopoldo_aguerrevere';
+		public $host = 'localhost';
 		
 		function __construct($descripcion = "") 
 	 	{
@@ -20,7 +25,8 @@
 		}
 
 		function registrarRol() {
-			$this->model->crearConexion();
+			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
+			mysql_select_db($this->baseDeDatos, $strConexion);
 
 			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.rol (descripcion) VALUES ('".$this->descripcion."')");
 			/*
@@ -30,19 +36,20 @@
 				echo "Query: error presenciado";
 			}
 			*/
-			$this->model->cerrarConexion();
+			mysql_close($strConexion);
 			
 			return 0;
 		}
 
 		function listarRol() {
-			$this->model->crearConexion();
+			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
+			mysql_select_db($this->baseDeDatos, $strConexion);
 
 			$result = mysql_query("SELECT descripcion FROM leopoldo_aguerrevere.rol");
 			/*
 			$result = mysql_query("SELECT nombre, direccion, telefono, encargado FROM probuhos_sistema_ice.cliente");
 			*/
-			$this->model->cerrarConexion();
+			mysql_close($strConexion);
 
 			return $result;
 			

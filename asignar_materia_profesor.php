@@ -19,36 +19,6 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/icons.css" rel="stylesheet">
         <link href="css/generics.css" rel="stylesheet"> 
-        <!-- Oto Script -->
-        <script>
-            function validarPass() {
-                var pass1 = document.getElementById("pass1").value;
-                var pass2 = document.getElementById("pass2").value;
-                
-                var espaciado = false;
-                var cont = 0;
-
-                while (!espaciado && (cont < pass1.length)) {
-                    if (pass1.charAt(cont) == " ") {
-                        espaciado = true;
-                    }
-                    cont++;
-                }
-
-                if (espaciado) {
-                    alert("El password no debe contener espacios en blanco");
-                    return false;
-                }
-
-                if (pass1 != pass2) {
-                    alert("Los password deben coincidir");
-                    return false;
-                }
-                else {
-                    return true;
-                }
-            }
-        </script>
 
     </head>
     <body id="skin-blur-violate">
@@ -60,23 +30,6 @@
             <div class="media-body">
                 <div class="media" id="top-menu">
                     
-                    <!--
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="messages" class="drawer-toggle" href="">
-                            <i class="sa-top-message"></i>
-                            <i class="n-count animated">5</i>
-                            <span>Messages</span>
-                        </a>
-                    </div>
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="notifications" class="drawer-toggle" href="">
-                            <i class="sa-top-updates"></i>
-                            <i class="n-count animated">9</i>
-                            <span>Updates</span>
-                        </a>
-                    </div>
-                    -->
-                    
 
                     <div id="time" class="pull-right">
                         <span id="hours"></span>
@@ -85,11 +38,7 @@
                         :
                         <span id="sec"></span>
                     </div>
-                    <!--
-                    <div class="media-body">
-                        <input type="text" class="main-search">
-                    </div>
-                    -->
+                
                 </div>
             </div>
         </header>
@@ -459,7 +408,6 @@
                             </div>
                             </br>
                             <div class="form-group">
-                                <label>Fecha de nacimiento</label>
                                 <input type="date" name="fecha_nac" class="form-control input-sm m-b-10" required>
                             </div>
                             </br>

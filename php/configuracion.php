@@ -4,40 +4,57 @@
 	/**
 	* 
 	*/
-	class Grado
+	class Configuracion
 	{
 		public $model;
 
-		public $descripcion;
+		// Datos para configuracion de periodo
+		public $grados;
+		public $lapsos;
 
 		public $usuario = 'root';
 		public $pass = '';
 		public $baseDeDatos = 'leopoldo_aguerrevere';
 		public $host = 'localhost';
 		
-		function __construct($descripcion = "") 
+		function __construct($grados = "", $lapsos = "") 
 	 	{
-			$this->descripcion = $descripcion;
+			$this->grados = $grados;
+			$this->lapsos = $lapsos;
 
 			$this->model = new Modelo();
 		}
 
-		function registrarGrado() {
+		function crearConfiguracion() {
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
-			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.grado (descripcion) VALUES ('".$this->descripcion."')");
+			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.configuracion (grados, lapsos) VALUES ('".$this->grados."', '".$this->lapsos."')");
 
 			mysql_close($strConexion);
 			
 			return 0;
 		}
 
+		function verConfiguraciones() {
+			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
+			mysql_select_db($this->baseDeDatos, $strConexion);
+
+			$result = mysql_query("SELECT grados, lapsos FROM leopoldo_aguerrevere.configuracion");
+			/*
+			$result = mysql_query("SELECT nombre, direccion, telefono, encargado FROM probuhos_sistema_ice.cliente");
+			*/
+			mysql_close($strConexion);
+
+			return $result;
+			
+		}
+
 		function listarGrado() {
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
-			$result = mysql_query("SELECT descripcion FROM leopoldo_aguerrevere.grado");
+			$result = mysql_query("SELECT id, descripcion FROM leopoldo_aguerrevere.grado");
 
 			mysql_close($strConexion);
 
@@ -45,54 +62,28 @@
 			
 		}
 
-		function verificarSiExisteGrado() {
-			
+		function listarLapso() {
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
-			$result = mysql_query("SELECT id FROM leopoldo_aguerrevere.grado");
+			$result = mysql_query("SELECT id, lapso FROM leopoldo_aguerrevere.lapsos");
 
 			mysql_close($strConexion);
-			
-			$registros = mysql_num_rows($result);
 
-			if ($registros > 0) {
-				return TRUE;
-			}
-			else {
-				return FALSE;
-			}
+			return $result;
+			
 		}
 
-		function verificarSiExistePeriodo() {
-			
+		function listarRol() {
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
-			$result = mysql_query("SELECT id FROM leopoldo_aguerrevere.periodo");
-
-			mysql_close($strConexion);
-			
-			$registros = mysql_num_rows($result);
-
-			if ($registros > 0) {
-				return TRUE;
-			}
-			else {
-				return FALSE;
-			}
-		}
-
-		function listarPeriodo() {
-			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
-			mysql_select_db($this->baseDeDatos, $strConexion);
-
-			$result = mysql_query("SELECT anho FROM leopoldo_aguerrevere.periodo");
+			$result = mysql_query("SELECT id, descripcion FROM leopoldo_aguerrevere.rol");
 			/*
 			$result = mysql_query("SELECT nombre, direccion, telefono, encargado FROM probuhos_sistema_ice.cliente");
 			*/
 			mysql_close($strConexion);
-			
+
 			return $result;
 			
 		}

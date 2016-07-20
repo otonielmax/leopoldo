@@ -40,6 +40,7 @@
 .sa-side-photos { background-image: url(../img/icon/photos.png); }
 .sa-side-user { background-image: url(../img/icon/user.png); }
 .sa-side-shop { background-image: url(../img/icon/shop.png); }
+.sa-side-set { background-image: url(../img/icon/settings.png); }
 
 /* Top Menu */
 [class*="sa-top-"] {
@@ -135,6 +136,7 @@ only screen and (                min-resolution: 1.25dppx) {
     .sa-side-photos { background-image: url(../img/icon/photos@2x.png); background-size: 23px 19px; }
     .sa-side-user { background-image: url(../img/icon/user@2x.png); background-size: 25px 25px; }
     .sa-side-shop { background-image: url(../img/icon/shop@2x.png); background-size: 25px 25px; }
+    .sa-side-set { background-image: url(../img/icon/settings@2x.png); background-size: 25px 25px; }
     
     /* Top Menu */
     .sa-top-message { background-image: url(../img/icon/message@2x.png); background-size: 25px 17px; }

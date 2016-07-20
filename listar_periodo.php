@@ -227,6 +227,16 @@
 
                             $periodo = new periodo();
 
+                            if (isset($_POST['modificar_x'])) {
+                                $id_periodo = $_POST['id_periodo'];
+                                //echo "<script>alert('Modicandoooooo');</script>";
+                            }
+
+                            if (isset($_POST['eliminar_x'])) {
+                                $id_periodo = $_POST['id_periodo'];
+                                $periodo->eliminarPeriodo($id_periodo);
+                            }
+
                             $resultado = $periodo->listarPeriodo();
                             $numero_registros = mysql_num_rows($resultado);
 
@@ -235,22 +245,43 @@
                                     echo "<thead>";
                                         echo "<tr>";
                                             echo "<th>Periodo Academico</th>";
+                                            echo "<th>Inicio</th>";
+                                            echo "<th>Culminacion</th>";
+                                            echo "<th>Estatus</th>";
+                                            echo "<th>Modificar</th>";
+                                            echo "<th>Eliminar</th>";
                                         echo "</tr>";
                                     echo "</thead>";
                                     echo "<tbody>";
-                                    
+                                    $fecha_actual = date("Y-m-d");
                                     while ($row = mysql_fetch_row($resultado)) {
                                         echo "<tr>";
                                             echo "<td>".$row[0]."</td>";
+                                            echo "<td>".$row[1]."</td>";
+                                            echo "<td>".$row[2]."</td>";
+                                            if (strcmp($fecha_actual, $row[1]) < 0) {
+                                                echo "<td>Por iniciar</td>";
+                                            }
+                                            elseif (strcmp($fecha_actual, $row[1]) >= 0 && strcmp($fecha_actual, $row[2]) < 0) {
+                                                echo "<td>En curso</td>";
+                                            }
+                                            elseif (strcmp($fecha_actual, $row[2]) == 0) {
+                                                echo "<td>Ultimo dia</td>";
+                                            }
+                                            else {
+                                                echo "<td>Culminado</td>";
+                                            }
+                                            echo "<td><form method='post' action='listar_periodo.php'><input type='image' alt='Submit' name='modificar' src='img/icon/settings.png' height='16' width='16'/><input type='hidden' name='id_periodo' value='".$row[3]."'/></form></td>";
+                                            echo "<td><form method='post'><input type='image' alt='Submit' name='eliminar' src='img/icon/delete_white.png' height='16' width='16'/><input type='hidden' name='id_periodo' value='".$row[3]."'/></form></td>";
                                         echo "</tr>";
                                     }
-
                                     echo "</tbody>";
                                 echo "</table>";
                             }
                             else {
                                 echo "<h4 class='page-title'>No hay periodos registrados</h4>";
                             }
+
                         ?>
                         
                     </div>

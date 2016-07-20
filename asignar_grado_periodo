@@ -27,25 +27,7 @@
             <a class="logo pull-left" href="index.php">Sistema de Gestion</a>
             
             <div class="media-body">
-                <div class="media" id="top-menu">
-                    
-                    <!--
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="messages" class="drawer-toggle" href="">
-                            <i class="sa-top-message"></i>
-                            <i class="n-count animated">5</i>
-                            <span>Messages</span>
-                        </a>
-                    </div>
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="notifications" class="drawer-toggle" href="">
-                            <i class="sa-top-updates"></i>
-                            <i class="n-count animated">9</i>
-                            <span>Updates</span>
-                        </a>
-                    </div>
-                    -->
-                    
+                <div class="media" id="top-menu">                    
 
                     <div id="time" class="pull-right">
                         <span id="hours"></span>
@@ -114,20 +96,6 @@
                             -->
                         </ul>
                     </li>
-
-                    <li class="dropdown">
-                        <a class="sa-side-user" href="">
-                            <span class="menu-item">Estudiantes</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="crear_estudiantes.php">Crear</a></li>
-                            <li><a href="listar_estudiantes.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
-                        </ul>
-                    </li>
                     <li class="dropdown">
                         <a class="sa-side-user" href="">
                             <span class="menu-item">Rol</span>
@@ -168,28 +136,24 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="sa-side-set" href="">
-                            <span class="menu-item">Configuracion</span>
+                        <a class="sa-side-shop" href="">
+                            <span class="menu-item">Grado</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="crear_configuracion.php">Ver</a></li>
+                            <li><a href="crear_grado.php">Crear</a></li>
+                            <li><a href="listar_grado.php">Listar</a></li>
                             <!--
                             <li><a href="form-examples.html">Form Examples</a></li>
                             <li><a href="form-validation.html">Form Validation</a></li>
                             -->
                         </ul>
                     </li>
-
-                   
                 </ul>
 
             </aside>
         
             <!-- Content -->
-            <section id="content" class="container">
-            
-                <!-- Messages Drawer -->
-                
+            <section id="content" class="container">     
                 <!-- Breadcrumb -->
                 
                 <ol class="breadcrumb hidden-xs">
@@ -198,67 +162,62 @@
                     <li class="active">Datos</li>
                 </ol>
                 
-                <h4 class="page-title">Registrar Periodo</h4>
+                <h4 class="page-title">Registrar Grado</h4>
                             
                 <!-- Basic with panel-->
                 <div class="block-area" id="basic" style="max-width: 500px;">
                     <!--
-                    <h3 class="block-title">Basic Example with Panel</h3>
+                    <h3 class="block-title">Basic Example with Panel</h3>¨
                     -->
+                    <div class="tile p-15">
+                        <?php
+                            include('php/grado.php');
+                            
+                            $grado = new Grado();
 
-                    <?php
-                        include('php/periodo.php');
+                            if ($grado->verificarSiExistePeriodo()) { 
+                                if ($grado->verificarSiExisteGrado()) {
+                                    $resultados = $grado->listarPeriodo();
+                                    $resultado2 = $grado->listarGrado();
 
-                        $fecha_actual = date("Y-m-d");
-                        $anho_siguiente = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d") + 1, date("Y") + 1));
-                        $mes_seguiente = date("Y-m-d", mktime(0, 0, 0, date("m") + 1, date("d") + 1, date("Y")));
-                        $mes_posterior = date("Y-m-d", mktime(0, 0, 0, date("m") + 1, date("d") + 2, date("Y") + 1));
+                                    echo "<form role='form' method='post'>";
+                                        echo "<div class='form-group'><input type='text' name='lapso' class='form-control input-sm m-b-10' placeholder='Numero de Lapso'></div></br>";
+                                        echo "<div class='form-group'>";
+                                            echo "<select name='id_periodo' class='select' style='width: 100%;'>";
+                                            while ($row = mysql_fetch_row($resultados)) {    
+                                                echo "<option value='".$row[0]."'>".$row[1]."</option>";
+                                            }    
+                                            echo "</select>";
+                                        echo "</div></br>";
+                                        echo "<div class='form-group'>";
+                                            echo "<select name='id_periodo' class='select' style='width: 100%;'>";
+                                            while ($row = mysql_fetch_row($resultado2)) {    
+                                                echo "<option value='".$row[0]."'>".$row[1]."</option>";
+                                            }    
+                                            echo "</select>";
+                                        echo "</div></br>";
+                                        echo "<button type='submit' name='registrarLapso' class='btn btn-sm m-t-10'>Registrar</button>";
+                                    echo "</form>";
 
-                        if (isset($_POST['registrarPeriodo'])) {
+                                    if (isset($_POST['registrarLapso'])) {
 
-                            $anho = $_POST['descripcion'];
-                            $inicio = $_POST['fecha_inicio'];
-                            $fin = $_POST['fecha_final'];
+                                        $num_lapso = $_POST['lapso'];
+                                        $id_periodo = $_POST['id_periodo'];
+                                      
+                                        $lapso = new Lapso($num_lapso, $id_periodo);
+                                        $respuestaRegistro = $lapso->registrarLapso();
 
-                            if (strcmp($inicio, $fin) < 0) {
-                                $periodo = new Periodo($anho, $inicio, $fin);
-                                $respuestaRegistro = $periodo->registrarPeriodo();
-                            }
-                            elseif (strcmp($inicio, $fin) == 0) {
-                                echo "<script>alert('Las fecha de inicio no puede ser igual a la de culminacion');</script>";
+                                        unset($_POST);
+                                        $_POST = array();
+
+                                    }
+                                } 
                             }
                             else {
-                                echo "<script>alert('La fecha de inicio no puede ser mayor a la de culminacion');</script>";
-                            }
+                                echo "<ol class='breadcrumb hidden-xs' align='center'><li class='active'>Registrar Periodo</li></ol>";
+                            }    
+                        ?>
                         
-                            unset($_POST);
-                            $_POST = array();
-                        }
-                    ?>    
-
-                    <div class="tile p-15">
-                        <form role="form" method="post">
-                            <div class="form-group">
-                                <label>Denominacion del Periodo</label>
-                                <input type="text" name="descripcion" class="form-control input-sm m-b-10" placeholder="Ejemplo: Registro de Estudiantes, Carga de notas, etc..." required>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <label>Fecha de Inicio</label>
-                                <input type="date" name="fecha_inicio" class="form-control input-sm m-b-10" min="<?php echo $fecha_actual; ?>" max="<?php echo $anho_siguiente; ?>" value="<?php echo $fecha_actual; ?>" required>
-                            </div>
-                            </br>
-                            <div class="form-group">
-                                <label>Fecha de Culminacion</label>
-                                <input type="date" name="fecha_final" class="form-control input-sm m-b-10" min="<?php echo $mes_seguiente; ?>" max="<?php echo $mes_posterior; ?>" value="<?php echo $mes_seguiente; ?>" required>
-                            </div>
-                            </br>
-                            
-                            <button type="submit" name="registrarPeriodo" class="btn btn-sm m-t-10">Registrar</button>
-                            <!--
-                            <button type="submit" class="btn btn-sm m-t-10">Cancel</button>
-                            -->
-                        </form>
                     </div>
                 </div>
             
