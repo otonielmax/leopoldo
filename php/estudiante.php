@@ -13,7 +13,7 @@
 		public $id_usuario;
 
 		public $usuario = 'root';
-		public $pass = '';
+		public $pass = '21091361';
 		public $baseDeDatos = 'leopoldo_aguerrevere';
 		public $host = 'localhost';
 		
@@ -41,7 +41,7 @@
 			return 0;
 		}
 
-		function registrarEstudianteCompleto($nombre1 = "", $nombre2 = "", $apellido1 = "", $apellido2 = "", $cedula = "", $fecha_nac = "", $direccion = "") {
+		function registrarEstudianteCompleto($nombre1 = "", $nombre2 = "", $apellido1 = "", $apellido2 = "", $cedula = "", $fecha_nac = "", $direccion = "", $telefono1 = "", $telefono2 = "") {
 
 			//$this->model = NULL;
 

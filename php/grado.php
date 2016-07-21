@@ -9,15 +9,17 @@
 		public $model;
 
 		public $descripcion;
+		public $nivel;
 
 		public $usuario = 'root';
-		public $pass = '';
+		public $pass = '21091361';
 		public $baseDeDatos = 'leopoldo_aguerrevere';
 		public $host = 'localhost';
 		
-		function __construct($descripcion = "") 
+		function __construct($nivel = "", $descripcion = "") 
 	 	{
 			$this->descripcion = $descripcion;
+			$this->nivel = $nivel;
 
 			$this->model = new Modelo();
 		}
@@ -26,7 +28,7 @@
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
-			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.grado (descripcion) VALUES ('".$this->descripcion."')");
+			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.grado (nivel, descripcion) VALUES ('".$this->nivel."', '".$this->descripcion."')");
 
 			mysql_close($strConexion);
 			

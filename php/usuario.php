@@ -18,13 +18,15 @@
 		public $direccion;
 		public $cedula;
 		public $password;
+		public $telefono1;
+		public $telefono2;
 
 		public $usuario = 'root';
-		public $pass = '';
+		public $pass = '21091361';
 		public $baseDeDatos = 'leopoldo_aguerrevere';
 		public $host = 'localhost';
 		
-		public function __construct($nombre1 = "", $nombre2 = "", $apellido1 = "", $apellido2 = "", $cedula = "", $fecha_nac = "", $direccion = "", $password = "") 
+		public function __construct($nombre1 = "", $nombre2 = "", $apellido1 = "", $apellido2 = "", $cedula = "", $fecha_nac = "", $direccion = "", $password = "", $telefono1 = "", $telefono2 = "") 
 	 	{
 			$this->nombre1 = $nombre1;
 			$this->nombre2 = $nombre2;
@@ -44,7 +46,7 @@
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
-			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.usuario (nombre1, nombre2, apellido1, apellido2, cedula, fecha_nac, direccion) VALUES ('".$this->nombre1."','".$this->nombre2."','".$this->apellido1."','".$this->apellido2."','".$this->cedula."','".$this->fecha_nac."','".$this->direccion."')");
+			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.usuario (nombre1, nombre2, apellido1, apellido2, cedula, fecha_nac, direccion, telefono1, telefono2) VALUES ('".$this->nombre1."','".$this->nombre2."','".$this->apellido1."','".$this->apellido2."','".$this->cedula."','".$this->fecha_nac."','".$this->direccion."', '".$this->telefono1."', '".$this->telefono2."')");
 
 			//$this->model->cerrarConexion();
 

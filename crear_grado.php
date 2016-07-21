@@ -28,24 +28,6 @@
             
             <div class="media-body">
                 <div class="media" id="top-menu">
-                    
-                    <!--
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="messages" class="drawer-toggle" href="">
-                            <i class="sa-top-message"></i>
-                            <i class="n-count animated">5</i>
-                            <span>Messages</span>
-                        </a>
-                    </div>
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="notifications" class="drawer-toggle" href="">
-                            <i class="sa-top-updates"></i>
-                            <i class="n-count animated">9</i>
-                            <span>Updates</span>
-                        </a>
-                    </div>
-                    -->
-                    
 
                     <div id="time" class="pull-right">
                         <span id="hours"></span>
@@ -54,11 +36,7 @@
                         :
                         <span id="sec"></span>
                     </div>
-                    <!--
-                    <div class="media-body">
-                        <input type="text" class="main-search">
-                    </div>
-                    -->
+                    
                 </div>
             </div>
         </header>
@@ -196,7 +174,7 @@
                                 $nivel = $_POST['nivel'];
                                 $descripcion = $_POST['descripcion'];
                                   
-                                $grado = new Grado($descripcion);
+                                $grado = new Grado($nivel, $descripcion);
                                 $respuestaRegistro = $grado->registrarGrado();
 
                                 unset($_POST);
@@ -206,11 +184,11 @@
                         ?>
                         <form role="form" method="post">
                             <div class="form-group">
-                                <input type="text" name="nivel" class="form-control input-sm m-b-10" placeholder="Ingresa el nivel de instruccion">
+                                <input type="text" name="nivel" class="form-control input-sm m-b-10" placeholder="Nivel de Intruccion (Ejemplo: 1, 2, 3)...">
                             </div>
                             </br>
                             <div class="form-group">
-                                <input type="text" name="descripcion" class="form-control input-sm m-b-10" placeholder="Ingresa el Grado">
+                                <input type="text" name="descripcion" class="form-control input-sm m-b-10" placeholder="Denominacion del Grado (Ejemplo: Primer Año)">
                             </div>
                             </br>
                             <button type="submit" name="registrarGrado" class="btn btn-sm m-t-10">Registrar</button>

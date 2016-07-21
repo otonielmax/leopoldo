@@ -97,12 +97,14 @@
                             -->
                         </ul>
                     </li>
+
                     <li class="dropdown">
-                        <a class="sa-side-user" href="">
+                        <a class="sa-side-estudiante" href="">
                             <span class="menu-item">Estudiantes</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="crear_estudiantes.php">Crear</a></li>
+                            <li><a href="crear_estudiantes.php">Registrar Nuevo</a></li>
+                            <li><a href="crear_estudiantes.php">Registrar Existente</a></li>
                             <li><a href="listar_estudiantes.php">Listar</a></li>
                             <!--
                             <li><a href="form-examples.html">Form Examples</a></li>
@@ -150,40 +152,14 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="sa-side-shop" href="">
-                            <span class="menu-item">Clientes</span>
+                        <a class="sa-side-set" href="">
+                            <span class="menu-item">Configuracion</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="crear_clientes.php">Crear</a></li>
-                            <li><a href="listar_clientes.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
+                            <li><a href="crear_configuracion.php">Ver</a></li>
                         </ul>
                     </li>
-
-                    
-                    <li>
-                        <a class="sa-side-chart" href="charts.php">
-                            <span class="menu-item">Graficos</span>
-                        </a>
-                    </li>
-                    <!--
-                    <li>
-                        <a class="sa-side-folder" href="file-manager.html">
-                            <span class="menu-item">File Manager</span>
-                        </a>
-                    </li>
-                    -->
-                    <li>
-                        <a class="sa-side-calendar" href="calendar.php">
-                            <span class="menu-item">Calendario</span>
-                        </a>
-                    </li>
-                
                 </ul>
-
             </aside>
         
             <!-- Content -->
@@ -217,10 +193,30 @@
                             $estudiante = new Estudiante();
 
                             if ($estudiante->existenGrados() == TRUE) {
-                                $resultados = $estudiante->listarGrados();
+                                $resultados = $estudiante->listarGrado();
                                 $num = mysql_num_rows($resultados);
                                 if ($num > 0) {
-
+                                    echo "<form role='form' method='post'>";
+                                        echo "<div class='form-group'>";
+                                            echo "<label>Grado a Cursar</label>";
+                                            echo "<select name='id_grado' class='select' style='width: 100%;'>";
+                                            while ($row = mysql_fetch_row($resultados)) {    
+                                                echo "<option value='".$row[0]."'>".$row[1]."</option>";
+                                            }    
+                                            echo "</select>";
+                                        echo "</div></br>";
+                                        echo "<div class='form-group'><input type='text' name='nombre1' class='form-control input-sm m-b-10' placeholder='Primer Nombre' required></div></br>";
+                                        echo "<div class='form-group'><input type='text' name='nombre2' class='form-control input-sm m-b-10' placeholder='Segundo Nombre (Opcional)'></div></br>";
+                                        echo "<div class='form-group'><input type='text' name='apellido1' class='form-control input-sm m-b-10' placeholder='Primer Apellido' required></div></br>";
+                                        echo "<div class='form-group'><input type='text' name='apellido2' class='form-control input-sm m-b-10' placeholder='Segundo Apellido (Opcional)'></div></br>";
+                                        echo "<div class='form-group'><input type='text' name='cedula' class='form-control input-sm m-b-10' placeholder='Cedula' required></div></br>";
+                                        echo "<div class='form-group'><input type='text' name='telefono1' class='form-control input-sm m-b-10' placeholder='Telefono' required></div></br>";
+                                        echo "<div class='form-group'><input type='text' name='telefono2' class='form-control input-sm m-b-10' placeholder='Telefono (Opcional)'></div></br>";
+                                        echo "<div class='form-group'><input type='date' name='fecha_nac' class='form-control input-sm m-b-10' required></div></br>";
+                                        echo "<div class='form-group'><textarea name='direccion' class='form-control m-b-10' placeholder='Direccion' required></textarea></div></br>";
+                                        echo "<button type='submit' name='registrarEstudiante' class='btn btn-sm m-t-10'>Registrar</button>";
+                                    echo "</form>";
+                                    /*
                                     echo "<form role='form' method='post'>";
                                         echo "<div class='form-group'>";
                                             echo "<label>Grado a Cursar</label>";
@@ -232,31 +228,15 @@
                                         echo "</div></br>";
                                         echo "<button type='submit' name='registrarEstudiante' class='btn btn-sm m-t-10'>Registrar</button>";
                                     echo "</form>";
+                                    */
                                 }
                                 else {
-                                    echo "<form role='form' method='post'>";
-                                        echo "<div class='form-group'><input type='text' name='nombre1' class='form-control input-sm m-b-10' placeholder='Primer Nombre' required></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='nombre2' class='form-control input-sm m-b-10' placeholder='Segundo Nombre (Opcional)'></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='apellido1' class='form-control input-sm m-b-10' placeholder='Primer Apellido' required></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='apellido2' class='form-control input-sm m-b-10' placeholder='Segundo Apellido (Opcional)'></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='cedula' class='form-control input-sm m-b-10' placeholder='Cedula' required></div></br>";
-                                        echo "<div class='form-group'><input type='date' name='fecha_nac' class='form-control input-sm m-b-10' required></div></br>";
-                                        echo "<div class='form-group'><textarea name='direccion' class='form-control m-b-10' placeholder='Direccion' required></textarea></div></br>";
-                                        echo "<button type='submit' name='registrarUsuario' class='btn btn-sm m-t-10'>Registrar</button>";
-                                    echo "</form>";
+                                    echo "<h4 style='font-size: 14px; margin-left: 20px;'>Parece haber un problema con el sistema por favor recargue la paguina haciendo <strong><a href='crear_estudiantes.php'>click aqui</a></strong>. Si el problema persiste por favor comuniquese con el personal de sistemas.</h4>";                                    
                                 } 
                             }
                             else {
-                                echo "<form role='form' method='post'>";
-                                        echo "<div class='form-group'><input type='text' name='nombre1' class='form-control input-sm m-b-10' placeholder='Primer Nombre' required></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='nombre2' class='form-control input-sm m-b-10' placeholder='Segundo Nombre (Opcional)'></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='apellido1' class='form-control input-sm m-b-10' placeholder='Primer Apellido' required></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='apellido2' class='form-control input-sm m-b-10' placeholder='Segundo Apellido (Opcional)'></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='cedula' class='form-control input-sm m-b-10' placeholder='Cedula' required></div></br>";
-                                        echo "<div class='form-group'><input type='date' name='fecha_nac' class='form-control input-sm m-b-10' required></div></br>";
-                                        echo "<div class='form-group'><textarea name='direccion' class='form-control m-b-10' placeholder='Direccion' required></textarea></div></br>";
-                                        echo "<button type='submit' name='registrarUsuario' class='btn btn-sm m-t-10'>Registrar</button>";
-                                echo "</form>";
+
+                                echo "<h4 style='font-size: 14px; margin-left: 20px;'>No se ha registrado ningun grado para poder inscribir a los estudiantes. Si desea crear alguno haga <strong><a href='crear_configuracion.php'>click aqui</a></strong>.</h4>";
                             }
 
                             if (isset($_POST['registrarEstudiante'])) {

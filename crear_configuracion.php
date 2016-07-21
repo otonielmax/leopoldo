@@ -28,24 +28,6 @@
             
             <div class="media-body">
                 <div class="media" id="top-menu">
-                    
-                    <!--
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="messages" class="drawer-toggle" href="">
-                            <i class="sa-top-message"></i>
-                            <i class="n-count animated">5</i>
-                            <span>Messages</span>
-                        </a>
-                    </div>
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="notifications" class="drawer-toggle" href="">
-                            <i class="sa-top-updates"></i>
-                            <i class="n-count animated">9</i>
-                            <span>Updates</span>
-                        </a>
-                    </div>
-                    -->
-                    
 
                     <div id="time" class="pull-right">
                         <span id="hours"></span>
@@ -54,11 +36,6 @@
                         :
                         <span id="sec"></span>
                     </div>
-                    <!--
-                    <div class="media-body">
-                        <input type="text" class="main-search">
-                    </div>
-                    -->
                 </div>
             </div>
         </header>
@@ -116,11 +93,12 @@
                     </li>
 
                     <li class="dropdown">
-                        <a class="sa-side-user" href="">
+                        <a class="sa-side-estudiante" href="">
                             <span class="menu-item">Estudiantes</span>
                         </a>
                         <ul class="list-unstyled menu-item">
-                            <li><a href="crear_estudiantes.php">Crear</a></li>
+                            <li><a href="crear_estudiantes.php">Registrar Nuevo</a></li>
+                            <li><a href="crear_estudiantes.php">Registrar Existente</a></li>
                             <li><a href="listar_estudiantes.php">Listar</a></li>
                             <!--
                             <li><a href="form-examples.html">Form Examples</a></li>
@@ -173,10 +151,6 @@
                         </a>
                         <ul class="list-unstyled menu-item">
                             <li><a href="crear_configuracion.php">Ver</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
                         </ul>
                     </li>
                 </ul>
@@ -376,7 +350,7 @@
                             </br>
 
                             <div class="form-group">
-                                <input type="text" name="descripcion" class="form-control input-sm m-b-10" placeholder="Materias de Arrastre">
+                                <input type="text" name="descripcion" class="form-control input-sm m-b-10" placeholder="Numero de Materias de Arrastre">
                             </div>
                             </br>
 
