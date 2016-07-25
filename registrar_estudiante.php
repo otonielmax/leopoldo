@@ -193,46 +193,46 @@
                             $estudiante = new Estudiante();
 
                             if ($estudiante->existenGrados() == TRUE) {
-                                $resultados = $estudiante->listarGrado();
-                                $num = mysql_num_rows($resultados);
-                                if ($num > 0) {
-                                    echo "<form role='form' method='post'>";
-                                        echo "<div class='form-group'>";
-                                            echo "<label>Grado a Cursar</label>";
-                                            echo "<select name='id_grado' class='select' style='width: 100%;'>";
-                                            while ($row = mysql_fetch_row($resultados)) {    
-                                                echo "<option value='".$row[0]."'>".$row[1]."</option>";
-                                            }    
-                                            echo "</select>";
-                                        echo "</div></br>";
-                                        echo "<div class='form-group'><input type='text' name='nombre1' class='form-control input-sm m-b-10' placeholder='Primer Nombre' required></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='nombre2' class='form-control input-sm m-b-10' placeholder='Segundo Nombre (Opcional)'></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='apellido1' class='form-control input-sm m-b-10' placeholder='Primer Apellido' required></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='apellido2' class='form-control input-sm m-b-10' placeholder='Segundo Apellido (Opcional)'></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='cedula' class='form-control input-sm m-b-10' placeholder='Cedula' required></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='telefono1' class='form-control input-sm m-b-10' placeholder='Telefono de Contacto' required></div></br>";
-                                        echo "<div class='form-group'><input type='text' name='telefono2' class='form-control input-sm m-b-10' placeholder='Otro Telefono (Opcional)'></div></br>";
-                                        echo "<div class='form-group'><input type='date' name='fecha_nac' class='form-control input-sm m-b-10' required></div></br>";
-                                        echo "<div class='form-group'><textarea name='direccion' class='form-control m-b-10' placeholder='Direccion' required></textarea></div></br>";
-                                        echo "<button type='submit' name='registrarEstudiante' class='btn btn-sm m-t-10'>Registrar</button>";
-                                    echo "</form>";
-                                    /*
-                                    echo "<form role='form' method='post'>";
-                                        echo "<div class='form-group'>";
-                                            echo "<label>Grado a Cursar</label>";
-                                            echo "<select name='id_grado' class='select' style='width: 100%;'>";
-                                            while ($row = mysql_fetch_row($resultados)) {    
-                                                echo "<option value='".$row[0]."'>".$row[1]."</option>";
-                                            }    
-                                            echo "</select>";
-                                        echo "</div></br>";
-                                        echo "<button type='submit' name='registrarEstudiante' class='btn btn-sm m-t-10'>Registrar</button>";
-                                    echo "</form>";
-                                    */
+                                if ($estudiante->existenEstudiantes() == TRUE) {
+
+                                    $resultados = $estudiante->listarGrado();
+                                    $estudiantes = $estudiante->listarEstudiante();
+                                    
+                                    $num = mysql_num_rows($resultados);
+                                    $numE = mysql_num_rows($estudiantes);
+
+                                    if ($num > 0 && $numE > 0) {
+                                        echo "<form role='form' method='post'>";
+                                            echo "<div class='form-group'>";
+                                                echo "<label>Selecciona el Estudiante</label>";
+                                                echo "<select name='id_estudiante' class='select' style='width: 100%;'>";
+                                                while ($rowE = mysql_fetch_row($estudiantes)) {    
+                                                    echo "<option value='".$rowE[0]."'>".$rowE[1]." ".$rowE[2]."</option>";
+                                                }    
+                                                echo "</select>";
+                                            echo "</div></br>";
+                                            
+                                            echo "<div class='form-group'>";
+                                                echo "<label>Grado a Cursar</label>";
+                                                echo "<select name='id_grado' class='select' style='width: 100%;'>";
+                                                while ($row = mysql_fetch_row($resultados)) {    
+                                                    echo "<option value='".$row[0]."'>".$row[1]."</option>";
+                                                }    
+                                                echo "</select>";
+                                            echo "</div></br>";
+                                            echo "<button type='submit' name='registrarEstudiante' class='btn btn-sm m-t-10'>Registrar</button>";
+                                        echo "</form>";
+
+                                    }
+                                    else {
+                                        echo "<h4 style='font-size: 14px; margin-left: 20px;'>Parece haber un problema con el sistema por favor recargue la paguina haciendo <strong><a href='registrar_estudiante.php'>click aqui</a></strong>. Si el problema persiste por favor comuniquese con el personal de sistemas.</h4>";                                    
+                                    }
                                 }
+
                                 else {
-                                    echo "<h4 style='font-size: 14px; margin-left: 20px;'>Parece haber un problema con el sistema por favor recargue la paguina haciendo <strong><a href='crear_estudiantes.php'>click aqui</a></strong>. Si el problema persiste por favor comuniquese con el personal de sistemas.</h4>";                                    
-                                } 
+                                    echo "<h4 style='font-size: 14px; margin-left: 20px;'>No hay ningun estudiante registrado en el sistema. Si desear crear uno haz <strong><a href='crear_estudiantes.php'>click aqui</a></strong>.</h4>";
+                                }
+
                             }
                             else {
 
@@ -241,26 +241,17 @@
 
                             if (isset($_POST['registrarEstudiante'])) {
 
-                                if (!$estudiante->validarSiExtudianteExiste($_POST['cedula'])) {
-
-                                    $nombre1 = $_POST['nombre1'];
-                                    $nombre2 = $_POST['nombre2'];
-                                    $apellido1 = $_POST['apellido1'];
-                                    $apellido2 = $_POST['apellido2'];
-                                    $direccion = $_POST['direccion'];
-                                    $cedula = $_POST['cedula'];
-                                    $fecha_nac = $_POST['fecha_nac'];
-                                    $telefono1 = $_POST['telefono1'];
-                                    $telefono2 = $_POST['telefono2'];
+                                if (!$estudiante->validarSiExtudianteExiste($_POST['id_usuario'])) {
+                                    $id_usuario = $_POST['id_usuario'];
                       
-                                    $estudiante = new Estudiante();
-                                    $respuestaRegistro = $estudiante->registrarEstudianteCompleto($nombre1, $nombre2, $apellido1, $apellido2, $cedula, $fecha_nac, $telefono1, $telefono2);
+                                    $estudiante = new Estudiante($id_usuario);
+                                    $respuestaRegistro = $estudiante->registrarEstudiante();
 
                                     unset($_POST);
                                     $_POST = array();
                                 }
                                 else {
-                                    echo "<h4 class='page-title'>El estudiante ya se encuentra registro en el sistema</h4>";
+                                    echo "<h4 class='page-title'>El estudiante ya se encuentra asignado a un usuario</h4>";
                                 }
                             }
 
@@ -268,6 +259,13 @@
 
                             if (isset($_POST['registrarUsuario'])) {
 
+                                $nombre1 = $_POST['nombre1'];
+                                $nombre2 = $_POST['nombre2'];
+                                $apellido1 = $_POST['apellido1'];
+                                $apellido2 = $_POST['apellido2'];
+                                $direccion = $_POST['direccion'];
+                                $cedula = $_POST['cedula'];
+                                $fecha_nac = $_POST['fecha_nac'];
 
                           
                                 $estudiante = new Estudiante();

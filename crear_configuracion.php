@@ -98,12 +98,8 @@
                         </a>
                         <ul class="list-unstyled menu-item">
                             <li><a href="crear_estudiantes.php">Registrar Nuevo</a></li>
-                            <li><a href="crear_estudiantes.php">Registrar Existente</a></li>
+                            <li><a href="registrar_estudiante.php">Registrar Existente</a></li>
                             <li><a href="listar_estudiantes.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -113,10 +109,6 @@
                         <ul class="list-unstyled menu-item">
                             <li><a href="crear_rol.php">Crear</a></li>
                             <li><a href="listar_rol.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -126,12 +118,9 @@
                         <ul class="list-unstyled menu-item">
                             <li><a href="crear_periodo.php">Crear</a></li>
                             <li><a href="listar_periodo.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
                         </ul>
                     </li>
+                    <!--
                     <li class="dropdown">
                         <a class="sa-side-user" href="">
                             <span class="menu-item">Lapso</span>
@@ -139,12 +128,10 @@
                         <ul class="list-unstyled menu-item">
                             <li><a href="crear_lapso.php">Crear</a></li>
                             <li><a href="listar_lapso.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
+                            
                         </ul>
                     </li>
+                    -->
                     <li class="dropdown">
                         <a class="sa-side-set" href="">
                             <span class="menu-item">Configuracion</span>
