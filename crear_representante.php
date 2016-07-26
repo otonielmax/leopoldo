@@ -175,7 +175,7 @@
                     <li class="active">Datos</li>
                 </ol>
                 
-                <h4 class="page-title">Registrar Estudiante</h4>
+                <h4 class="page-title">Registrar Representante</h4>
                             
                 <div class="block-area" id="basic" style="max-width: 500px;">
                     <!--
@@ -187,82 +187,39 @@
 
                             //include('php/config.php');
 
-                            include('php/estudiante.php');
+                            include('php/representante.php');
                             //include('php/usuario.php');
 
-                            $estudiante = new Estudiante();
+                            $representante = new Representante();
 
-                            if ($estudiante->existenGrados() == TRUE) {
-                                if ($estudiante->existenRepresentantes() == TRUE) {
+                            echo "<form role='form' method='post'>";
+                                echo "<div class='form-group'>";
+                                    echo "<label>Parentesco</label>";
+                                    echo "<select name='parentesco' class='select' style='width: 100%;'>";    
+                                        echo "<option value='Padre'>Padre</option>";
+                                        echo "<option value='Madre'>Madre</option>";
+                                        echo "<option value='Hermano(a)'>Hemano(a)</option>";
+                                        echo "<option value='Abuelo(a)'>Abuelo(a)</option>";
+                                        echo "<option value='Tio(a)'>Tio(a)</option>";    
+                                    echo "</select>";
+                                echo "</div></br>";
+                                        
+                                echo "<div class='form-group'><input type='text' name='nombre1' class='form-control input-sm m-b-10' placeholder='Primer Nombre' required></div></br>";
+                                echo "<div class='form-group'><input type='text' name='nombre2' class='form-control input-sm m-b-10' placeholder='Segundo Nombre (Opcional)'></div></br>";
+                                echo "<div class='form-group'><input type='text' name='apellido1' class='form-control input-sm m-b-10' placeholder='Primer Apellido' required></div></br>";
+                                echo "<div class='form-group'><input type='text' name='apellido2' class='form-control input-sm m-b-10' placeholder='Segundo Apellido (Opcional)'></div></br>";
+                                echo "<div class='form-group'><input type='text' name='cedula' class='form-control input-sm m-b-10' placeholder='Cedula' required></div></br>";
+                                echo "<div class='form-group'><input type='text' name='telefono1' class='form-control input-sm m-b-10' placeholder='Telefono de Contacto' required></div></br>";
+                                echo "<div class='form-group'><input type='text' name='telefono2' class='form-control input-sm m-b-10' placeholder='Otro Telefono (Opcional)'></div></br>";
+                                echo "<div class='form-group'><input type='email' name='correo' class='form-control input-sm m-b-10' placeholder='Correo Electronico' required></div></br>";
+                                echo "<div class='form-group'><input type='date' name='fecha_nac' class='form-control input-sm m-b-10' required></div></br>";
+                                echo "<div class='form-group'><textarea name='direccion' class='form-control m-b-10' placeholder='Direccion' required></textarea></div></br>";
+                                echo "<button type='submit' name='registrarRepresentante' class='btn btn-sm m-t-10'>Registrar</button>";
+                            echo "</form>";
                                     
-                                    $resultados = $estudiante->listarGrado();
-                                    $representantes = $estudiante->listarRepresentantes();
-                                    
-                                    $num = mysql_num_rows($resultados);
-                                    $num2 = mysql_num_rows($representantes);
-                                    
-                                    if ($num > 0 && $num2 > 0) {
-                                        echo "<form role='form' method='post'>";
-                                            echo "<div class='form-group'>";
-                                                echo "<label>Grado a Cursar</label>";
-                                                echo "<select name='id_grado' class='select' style='width: 100%;'>";
-                                                while ($row = mysql_fetch_row($resultados)) {    
-                                                    echo "<option value='".$row[0]."'>".$row[1]."</option>";
-                                                }    
-                                                echo "</select>";
-                                            echo "</div></br>";
-                                            echo "<div class='form-group' style='width: 100%;' float: left;>";
-                                                echo "<label>Representante</label>";
-                                                echo "<select name='id_representante' class='select'>";
-                                                while ($row2 = mysql_fetch_row($representantes)) {    
-                                                    echo "<option value='".$row2[0]."'>".$row2[1]." ".$row2[2]."</option>";
-                                                }    
-                                                echo "</select>";
-                                            echo "</div>";
-                                            echo "<button type='submit' name='agregarRepresentante' class='btn btn-sm m-b-10' onclick='redireccionar()' style='float: right;'>Crear</button></br>";
-                                            echo "<div class='form-group'><input type='text' name='nombre1' class='form-control input-sm m-b-10' placeholder='Primer Nombre' required></div></br>";
-                                            echo "<div class='form-group'><input type='text' name='nombre2' class='form-control input-sm m-b-10' placeholder='Segundo Nombre (Opcional)'></div></br>";
-                                            echo "<div class='form-group'><input type='text' name='apellido1' class='form-control input-sm m-b-10' placeholder='Primer Apellido' required></div></br>";
-                                            echo "<div class='form-group'><input type='text' name='apellido2' class='form-control input-sm m-b-10' placeholder='Segundo Apellido (Opcional)'></div></br>";
-                                            echo "<div class='form-group'><input type='text' name='cedula' class='form-control input-sm m-b-10' placeholder='Cedula' required></div></br>";
-                                            echo "<div class='form-group'><input type='text' name='telefono1' class='form-control input-sm m-b-10' placeholder='Telefono de Contacto' required></div></br>";
-                                            echo "<div class='form-group'><input type='text' name='telefono2' class='form-control input-sm m-b-10' placeholder='Otro Telefono (Opcional)'></div></br>";
-                                            echo "<div class='form-group'><input type='email' name='correo' class='form-control input-sm m-b-10' placeholder='Correo Electronico (Opcional)'></div></br>";
-                                            echo "<div class='form-group'><input type='date' name='fecha_nac' class='form-control input-sm m-b-10' required></div></br>";
-                                            echo "<div class='form-group'><textarea name='direccion' class='form-control m-b-10' placeholder='Direccion' required></textarea></div></br>";
-                                            echo "<button type='submit' name='registrarEstudiante' class='btn btn-sm m-t-10'>Registrar</button>";
-                                        echo "</form>";
-                                        /*
-                                        echo "<form role='form' method='post'>";
-                                            echo "<div class='form-group'>";
-                                                echo "<label>Grado a Cursar</label>";
-                                                echo "<select name='id_grado' class='select' style='width: 100%;'>";
-                                                while ($row = mysql_fetch_row($resultados)) {    
-                                                    echo "<option value='".$row[0]."'>".$row[1]."</option>";
-                                                }    
-                                                echo "</select>";
-                                            echo "</div></br>";
-                                            echo "<button type='submit' name='registrarEstudiante' class='btn btn-sm m-t-10'>Registrar</button>";
-                                        echo "</form>";
-                                        */
-                                    }
-                                    else {
-                                        echo "<h4 style='font-size: 14px; margin-left: 20px;'>Parece haber un problema con el sistema por favor recargue la paguina haciendo <strong><a href='crear_estudiantes.php'>click aqui</a></strong>. Si el problema persiste por favor comuniquese con el personal de sistemas.</h4>";                                    
-                                    }
+                            if (isset($_POST['registrarRepresentante'])) {
 
-                                }
-                                else {
-                                    echo "<h4 style='font-size: 14px; margin-left: 20px;'>No hay ningun representante registrado para poder asociarlo a los estudiantes. Si desea crear alguno haga <strong><a href='crear_representante.php'>click aqui</a></strong>.</h4>";                                    
-                                } 
-                            }
-                            else {
-
-                                echo "<h4 style='font-size: 14px; margin-left: 20px;'>No se ha registrado ningun grado para poder inscribir a los estudiantes. Si desea crear alguno haga <strong><a href='crear_configuracion.php'>click aqui</a></strong>.</h4>";
-                            }
-
-                            if (isset($_POST['registrarEstudiante'])) {
-
-                                if (!$estudiante->validarSiExtudianteExiste($_POST['cedula'])) {
+                                if (!$representante->validarSiRepresentanteExiste($_POST['cedula'])) {
 
                                     $nombre1 = $_POST['nombre1'];
                                     $nombre2 = $_POST['nombre2'];
@@ -274,35 +231,20 @@
                                     $telefono1 = $_POST['telefono1'];
                                     $telefono2 = $_POST['telefono2'];
                                     $correo = $_POST['correo'];
-
-                                    $id_representante = $_POST['id_representante'];
+                                    $parentesco = $_POST['parentesco'];
                       
-                                    $id_grado = $_POST['grado'];
-
-                                    $estudiante = new Estudiante();
-                                    $respuestaRegistro = $estudiante->registrarEstudianteCompleto($nombre1, $nombre2, $apellido1, $apellido2, $cedula, $direccion, $fecha_nac, $telefono1, $telefono2, $correo, $id_representante);
+                                    $respuestaRegistro = $representante->registrarRepresentanteCompleto($nombre1, $nombre2, $apellido1, $apellido2, $cedula, $direccion, $fecha_nac, $telefono1, $telefono2, $correo, $parentesco);
 
                                     unset($_POST);
                                     $_POST = array();
                                 }
                                 else {
-                                    echo "<h4 class='page-title'>El estudiante ya se encuentra registro en el sistema</h4>";
+                                    echo "<h4 class='page-title'>El Representante ya se encuentra registrado en el sistema</h4>";
                                 }
                             }
 
                             //include_once('php/usuario.php');
-
-                            if (isset($_POST['registrarUsuario'])) {
-
-
-                          
-                                $estudiante = new Estudiante();
-                                $estudiante->registrarEstudianteCompleto($nombre1, $nombre2, $apellido1, $apellido2, $cedula, $fecha_nac, $direccion);
-                            
-                                unset($_POST);
-                                $_POST = array();
-
-                            }        
+        
                         ?> 
                     </div>
                 </div>
@@ -333,14 +275,6 @@
         
         <!-- All JS functions -->
         <script src="js/functions.js"></script>
-
-        <script language="JavaScript" type="text/javascript">
-
-            function redireccionar() {
-                window.location.href = "crear_representante.php";
-            } 
-
-        </script>
 
     </body>
 </html>

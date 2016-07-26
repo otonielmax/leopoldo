@@ -5,35 +5,35 @@
 	/**
 	* 
 	*/
-	class Estudiante
+	class Representante
 	{
 		public $model;
 		public $user;
 
 		public $id_usuario;
-		public $id_representante;
+		public $parentesco;
 
 		public $usuario = 'root';
 		public $pass = '';
 		public $baseDeDatos = 'leopoldo_aguerrevere';
 		public $host = 'localhost';
 		
-		function __construct($id_usuario = "", $id_representante = "") 
+		function __construct($id_usuario = "", $parentesco = "") 
 	 	{
 			$this->id_usuario = $id_usuario;
-			$this->id_representante = $id_representante;
+			$this->parentesco = $parentesco;
 
 			//$this->model = new Modelo();
 		}
 
-		function registrarEstudiante() {
+		function registrarRepresentante() {
 			//$this->model->crearConexion();
 
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
 
-			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.estudiante (id_usuario, id_representante) VALUES ('".$this->id_usuario."', '".$this->id_representante."')");
+			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.representante (id_usuario, parentesco) VALUES ('".$this->id_usuario."', '".$this->parentesco."')");
 			/*
 			$result2 = mysql_query("UPDATE leopoldo_aguerrevere.usuario SET id_rol = 2 WHERE id = '".$this->id_usuario."'");
 			*/
@@ -43,18 +43,7 @@
 			return 0;
 		}
 
-		function inscribirEstudiante($id_estudiante, $id_grado, $id_periodo) {
-			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
-			mysql_select_db($this->baseDeDatos, $strConexion);
-
-			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.estudiante_inscripcion (id_estudiante, id_grado, id_periodo) VALUES ('".$id_estudiante."', '".$id_grado."', '".$id_periodo."')");
-			
-			mysql_close($strConexion);
-			
-			return 0;	
-		}
-
-		function registrarEstudianteCompleto($nombre1 = "", $nombre2 = "", $apellido1 = "", $apellido2 = "", $cedula = "", $fecha_nac = "", $direccion = "", $telefono1 = "", $telefono2 = "", $correo = "", $id_representante = "") {
+		function registrarRepresentanteCompleto($nombre1 = "", $nombre2 = "", $apellido1 = "", $apellido2 = "", $cedula = "", $fecha_nac = "", $direccion = "", $telefono1 = "", $telefono2 = "", $correo = "", $parentesco = "") {
 
 			//$this->model = NULL;
 
@@ -62,9 +51,9 @@
 			$this->user->registrarUsuario();
 
 			$this->id_usuario = $this->buscarUsuario($cedula);
-			$this->id_representante = $id_representante;
-			
-			$this->registrarEstudiante();
+			$this->parentesco = $parentesco;
+
+			$this->registrarRepresentante();
 
 			/*
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
@@ -102,39 +91,6 @@
 			return 0;
 		}
 
-
-		function existenRepresentantes() {
-			//$this->model->crearConexion();
-			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
-			mysql_select_db($this->baseDeDatos, $strConexion);
-
-			$result = mysql_query("SELECT id FROM leopoldo_aguerrevere.representante");
-
-			//$this->model->cerrarConexion();
-			mysql_close($strConexion);
-
-			$registros = mysql_num_rows($result);
-
-			if ($registros > 0) {
-				return TRUE;
-			}
-			else {
-				return FALSE;
-			}
-		}
-
-		function listarRepresentantes() {
-			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
-			mysql_select_db($this->baseDeDatos, $strConexion);
-
-			$result = mysql_query("SELECT r.id, u.apellido1, u.nombre1 FROM leopoldo_aguerrevere.representante AS r JOIN leopoldo_aguerrevere.usuario AS u ON u.id = r.id_usuario ORDER BY u.apellido1");
-
-			mysql_close($strConexion);
-
-			return $result;
-			
-		}
-
 		function verificarSiRolExiste() {
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
@@ -160,7 +116,7 @@
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
-			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.rol (descripcion) VALUES ('Estudiante')");
+			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.rol (descripcion) VALUES ('Representante')");
 
 			mysql_close($strConexion);
 
@@ -171,7 +127,7 @@
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
-			$result = mysql_query("SELECT id FROM leopoldo_aguerrevere.rol WHERE descripcion = 'Estudiante'");
+			$result = mysql_query("SELECT id FROM leopoldo_aguerrevere.rol WHERE descripcion = 'Representante'");
 
 			mysql_close($strConexion);
 
@@ -193,11 +149,10 @@
 		}
 		*/
 
-		function validarSiExtudianteExiste($cedula) {
+		function validarSiRepresentanteExiste($cedula) {
 			//$this->model->crearConexion();
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
-
 
 			$result = mysql_query("SELECT id_rol FROM leopoldo_aguerrevere.usuario WHERE cedula = '".$cedula."'");
 
@@ -214,27 +169,12 @@
 			}
 		}
 
-		function buscarEstudiante($id_usuario) {
+		function existenRepresentantes() {
 			//$this->model->crearConexion();
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
-			$result = mysql_query("SELECT id FROM leopoldo_aguerrevere.estudiante WHERE id_usuario = '".$id_usuario."'");
-
-			//$this->model->cerrarConexion();
-			mysql_close($strConexion);
-
-			$us = mysql_fetch_row($result);
-
-			return $us[0];
-		}
-
-		function existenUsuarios() {
-			//$this->model->crearConexion();
-			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
-			mysql_select_db($this->baseDeDatos, $strConexion);
-
-			$result = mysql_query("SELECT id FROM leopoldo_aguerrevere.usuario");
+			$result = mysql_query("SELECT id FROM leopoldo_aguerrevere.representante");
 
 			//$this->model->cerrarConexion();
 			mysql_close($strConexion);
@@ -275,38 +215,6 @@
 			$us = mysql_fetch_row($result);
 
 			return $us[0];
-		}
-
-		function listarGrado() {
-			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
-			mysql_select_db($this->baseDeDatos, $strConexion);
-
-			$result = mysql_query("SELECT id, descripcion FROM leopoldo_aguerrevere.grado");
-
-			mysql_close($strConexion);
-
-			return $result;
-			
-		}
-
-		function existenGrados() {
-			//$this->model->crearConexion();
-			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
-			mysql_select_db($this->baseDeDatos, $strConexion);
-
-			$result = mysql_query("SELECT id FROM leopoldo_aguerrevere.grado");
-
-			//$this->model->cerrarConexion();
-			mysql_close($strConexion);
-
-			$registros = mysql_num_rows($result);
-
-			if ($registros > 0) {
-				return TRUE;
-			}
-			else {
-				return FALSE;
-			}
 		}
 
 		function existenEstudiantes() {

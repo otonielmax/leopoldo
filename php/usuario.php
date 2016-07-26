@@ -20,13 +20,14 @@
 		public $password;
 		public $telefono1;
 		public $telefono2;
+		public $correo;
 
 		public $usuario = 'root';
 		public $pass = '';
 		public $baseDeDatos = 'leopoldo_aguerrevere';
 		public $host = 'localhost';
 		
-		public function __construct($nombre1 = "", $nombre2 = "", $apellido1 = "", $apellido2 = "", $cedula = "", $fecha_nac = "", $direccion = "", $telefono1 = "", $telefono2 = "", $password = "") 
+		public function __construct($nombre1 = "", $nombre2 = "", $apellido1 = "", $apellido2 = "", $cedula = "", $fecha_nac = "", $direccion = "", $telefono1 = "", $telefono2 = "", $correo = "", $password = "") 
 	 	{
 			$this->nombre1 = $nombre1;
 			$this->nombre2 = $nombre2;
@@ -38,6 +39,7 @@
 			$this->password = $password;
 			$this->telefono1 = $telefono1;
 			$this->telefono2 = $telefono2;
+			$this->correo = $correo;
 
 			//$this->model = new Modelo();
 		}
@@ -48,7 +50,7 @@
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
-			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.usuario (nombre1, nombre2, apellido1, apellido2, cedula, fecha_nac, direccion, telefono1, telefono2, activo) VALUES ('".$this->nombre1."','".$this->nombre2."','".$this->apellido1."','".$this->apellido2."','".$this->cedula."','".$this->fecha_nac."','".$this->direccion."', '".$this->telefono1."', '".$this->telefono2."', 1)");
+			$result = mysql_query("INSERT INTO leopoldo_aguerrevere.usuario (nombre1, nombre2, apellido1, apellido2, cedula, fecha_nac, direccion, telefono1, telefono2, correo, activo) VALUES ('".$this->nombre1."','".$this->nombre2."','".$this->apellido1."','".$this->apellido2."','".$this->cedula."','".$this->fecha_nac."','".$this->direccion."', '".$this->telefono1."', '".$this->telefono2."', '".$this->correo."', 1)");
 
 			//$this->model->cerrarConexion();
 
@@ -63,7 +65,7 @@
 			$strConexion = mysql_connect($this->host, $this->usuario, $this->pass);
 			mysql_select_db($this->baseDeDatos, $strConexion);
 
-			$result = mysql_query("SELECT nombre1, nombre2, apellido1, apellido2, cedula, fecha_nac, direccion FROM leopoldo_aguerrevere.usuario");
+			$result = mysql_query("SELECT nombre1, nombre2, apellido1, apellido2, cedula, fecha_nac, direccion, correo FROM leopoldo_aguerrevere.usuario");
 			/*
 			$result = mysql_query("SELECT nombre, direccion, telefono, encargado FROM probuhos_sistema_ice.cliente");
 			*/
