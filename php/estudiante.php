@@ -14,7 +14,7 @@
 		public $id_representante;
 
 		public $usuario = 'root';
-		public $pass = '';
+		public $pass = '21091361';
 		public $baseDeDatos = 'leopoldo_aguerrevere';
 		public $host = 'localhost';
 		

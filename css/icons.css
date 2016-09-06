@@ -38,7 +38,7 @@
 .sa-side-page { background-image: url(../img/icon/pages.png); }
 .sa-side-chart { background-image: url(../img/icon/chart.png); }
 .sa-side-photos { background-image: url(../img/icon/photos.png); }
-.sa-side-user { background-image: url(../img/icon/user.png); }
+.sa-side-usuario { background-image: url(../img/icon/user.png); }
 .sa-side-shop { background-image: url(../img/icon/shop.png); }
 .sa-side-set { background-image: url(../img/icon/settings.png); }
 .sa-side-estudiante { background-image: url(../img/icon/estudiante.png); }
@@ -135,7 +135,7 @@ only screen and (                min-resolution: 1.25dppx) {
     .sa-side-page { background-image: url(../img/icon/pages@2x.png); background-size: 25px 21px; }
     .sa-side-chart { background-image: url(../img/icon/chart@2x.png); background-size: 24px 19px; }
     .sa-side-photos { background-image: url(../img/icon/photos@2x.png); background-size: 23px 19px; }
-    .sa-side-user { background-image: url(../img/icon/user@2x.png); background-size: 25px 25px; }
+    .sa-side-usuario { background-image: url(../img/icon/user@2x.png); background-size: 25px 25px; }
     .sa-side-shop { background-image: url(../img/icon/shop@2x.png); background-size: 25px 25px; }
     .sa-side-set { background-image: url(../img/icon/settings@2x.png); background-size: 25px 25px; }
     .sa-side-estudiante { background-image: url(../img/icon/estudiante@2x.png); background-size: 25px 25px; }

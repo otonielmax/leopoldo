@@ -75,71 +75,53 @@
                 <ul class="list-unstyled side-menu">
                     <li class="active">
                         <a class="sa-side-home" href="index.php">
-                            <span class="menu-item">Dashboard</span>
+                            <span class="menu-item">Inicio</span>
                         </a>
                     </li>
-                    <li class="dropdown">
-                        <a class="sa-side-user" href="">
-                            <span class="menu-item">Usuario</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="crear_usuario.php">Crear</a></li>
-                            <li><a href="listar_usuario.php">Listar</a></li>
-                            <!--
-                            <li><a href="form-examples.html">Form Examples</a></li>
-                            <li><a href="form-validation.html">Form Validation</a></li>
-                            -->
-                        </ul>
-                    </li>
+                    <?php
+                        include('php/modulos_procesos.php');
+                        include('php/permisos.php');
 
-                    <li class="dropdown">
-                        <a class="sa-side-estudiante" href="">
-                            <span class="menu-item">Estudiantes</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="crear_estudiantes.php">Registrar Nuevo</a></li>
-                            <li><a href="registrar_estudiante.php">Registrar Existente</a></li>
-                            <li><a href="listar_estudiantes.php">Listar</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="sa-side-user" href="">
-                            <span class="menu-item">Rol</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="crear_rol.php">Crear</a></li>
-                            <li><a href="listar_rol.php">Listar</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="sa-side-user" href="">
-                            <span class="menu-item">Periodo</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="crear_periodo.php">Crear</a></li>
-                            <li><a href="listar_periodo.php">Listar</a></li>
-                        </ul>
-                    </li>
-                    <!--
-                    <li class="dropdown">
-                        <a class="sa-side-user" href="">
-                            <span class="menu-item">Lapso</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="crear_lapso.php">Crear</a></li>
-                            <li><a href="listar_lapso.php">Listar</a></li>
-                            
-                        </ul>
-                    </li>
-                    -->
-                    <li class="dropdown">
-                        <a class="sa-side-set" href="">
-                            <span class="menu-item">Configuracion</span>
-                        </a>
-                        <ul class="list-unstyled menu-item">
-                            <li><a href="crear_configuracion.php">Ver</a></li>
-                        </ul>
-                    </li>
+                        $modulos = new SubModulos();
+
+                        $respuesta = $modulos->generarVistas();
+
+                        if (mysql_num_rows($respuesta) > 0) {
+                            $aux = NULL;
+                            while ($row = mysql_fetch_row($respuesta)) {
+                                $md = $row[0];
+                                if (is_null($aux)) {
+                                    echo "<li class='dropdown'>";
+                                        echo "<a class='sa-side-".strtolower($row[0])."' href=''>";
+                                            echo "<span class='menu-item'>".$row[0]."</span>";
+                                        echo "</a>";
+                                        echo "<ul class='list-unstyled menu-item'>";
+                                            echo "<li><a href='".$row[2]."'>".$row[1]."</a></li>";
+                                    $aux = $row[0];    
+                                }
+                                else if ($md == $aux) {
+                                            echo "<li><a href='".$row[2]."'>".$row[1]."</a></li>";
+                                }
+                                else {
+                                        echo "</ul>";
+                                    echo "</li>";
+                                    echo "<li class='dropdown'>";
+                                        echo "<a class='sa-side-".strtolower($row[0])."' href=''>";
+                                            echo "<span class='menu-item'>".$row[0]."</span>";
+                                        echo "</a>";
+                                        echo "<ul class='list-unstyled menu-item'>";
+                                            echo "<li><a href='".$row[2]."'>".$row[1]."</a></li>";
+                                    $aux = $row[0];
+                                }
+                                
+                            }
+
+                                        echo "</ul>";
+                                    echo "</li>";
+                        }
+
+                    ?>
+
                 </ul>
 
             </aside>
@@ -348,6 +330,80 @@
                         </div>
                     </form>
                 </div>
+
+                <!-- Bloque de Permisos -->
+                <div class="block-area" id="basic">
+          
+                    <form role="form" method="post">
+                        <div class="tile p-15">
+                            <label style="font-size: 16px; text-align: center; display: block;">Permisos</label>
+                            
+                            <hr class="whiter m-t-10" style="margin-bottom: 10px;" />
+                            </br>
+
+                            <label style="font-size: 14px; margin-bottom: 10px; width: 100%;">Tabla de Autorizacion por Rol</label>
+                            <?php
+                                $permisos = new Permisos();
+
+                                $roles = $permisos->listarRol();
+                                $autorizaciones = $permisos->listarPermisos();
+
+                                if (mysql_num_rows($roles) > 0) {
+                                    echo "<table class='table table-bordered table-hover tile'>";
+                                        echo "<thead>";
+                                            echo "<tr>";
+                                                echo "<th>Modulo</th>";
+                                                while ($row = mysql_fetch_row($roles)) {
+                                                    echo "<th>".$row[]."<th";
+                                                }
+                                            echo "</tr>";
+                                        echo "</thead>";
+                                        echo "<tbody>";
+                                    
+                                    if (mysql_num_rows($autorizaciones) > 0) {
+                                        $auxPermisos = NULL;
+                                        while ($row2 = mysql_fetch_row($autorizaciones)) {
+                                            $perm = $row2[0];
+                                            echo "<tr>";
+                                                echo "<td>".$row2[0]."</td>";
+                                                echo "<td>".$row2[1]."</td>";
+                                                echo "<td><form method='post' action='crear_configuracion.php'><input type='image' alt='Submit' name='modificar' src='img/icon/settings.png' height='16' width='16'/><input type='hidden' name='id_periodo' value=''/></form></td>";
+                                                echo "<td><form method='post'><input type='image' alt='Submit' name='eliminar' src='img/icon/delete_white.png' height='16' width='16'/><input type='hidden' name='id_periodo' value=''/></form></td>";
+                                            echo "</tr>";
+                                        }
+                                    }
+                                        
+                                        echo "</tbody>";
+                                    echo "</table>";
+                                }
+                                else {
+                                    echo "<h4 style='font-size: 14px; margin-left: 20px;'>No hay Roles registrados</h4>";
+                                }
+                                
+                            ?>
+                            <button type="submit" name="agregarRol" class="btn btn-sm m-b-10" style="display: block; float: right;">Agregar</button>
+                            <hr class="whiter m-t-10" style="margin-bottom: 10px;" />
+                            </br>
+
+                            <label style="font-size: 14px; margin-bottom: 10px; width: 100%;">Estudios</label>
+                            <div class="form-group"">
+                                <input type="text" name="descripcion" class="form-control input-sm m-b-10" placeholder="Promedio minimo requerido para aprobar">
+                            </div>
+                            </br>
+
+                            <div class="form-group">
+                                <input type="text" name="descripcion" class="form-control input-sm m-b-10" placeholder="Numero de Materias de Arrastre">
+                            </div>
+                            </br>
+
+                            <button type="submit" name="crearConfiguracion" class="btn btn-sm m-t-10" style="display: block; margin: 0 auto;">Actualizar</button>
+                            <!--
+                            <button type="submit" class="btn btn-sm m-t-10">Cancel</button>
+                            -->
+                        </div>
+                    </form>
+                </div>
+            
             
             </section>
         </section>
